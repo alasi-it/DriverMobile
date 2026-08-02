@@ -1,0 +1,33 @@
+{
+  "app": {
+    "language_english": "English",
+    "language_arabic_short": "Arabic",
+    "language_arabic_full": "Arabic"
+  },
+  "file_download": {
+    "success": "File downloaded successfully.",
+    "failed": "Failed to download the file. Please try again."
+  },
+  "core": {
+    "no_content": "No Content",
+    "error_title": "Something Went Wrong",
+    "error_desc": "An unexpected error occurred. Please try again or contact support if the problem persists.",
+    "reload": "Reload",
+    "documents_and_photos": "Documents & Photos",
+    "upload_tap_or_drag": "Tap to upload or drag and drop",
+    "upload_image": "Upload Image",
+    "upload_file": "Upload File"
+  },
+  "error_screen": {
+    "title": "Something Went Wrong",
+    "subtitle": "An unexpected error occurred.\nIt has been logged and our team will review it.",
+    "error_details": "Error Details",
+    "show_stack": "Show Stack Trace",
+    "hide_stack": "Hide Stack Trace",
+    "copy_report": "Copy Error Report",
+    "copied": "Copied!",
+    "try_again": "Try Again",
+    "no_stack": "No Stack Trace Available",
+    "inline_message": "An error occurred in this section"
+  }
+}

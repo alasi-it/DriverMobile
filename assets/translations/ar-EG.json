@@ -1,0 +1,35 @@
+{
+  "app": {
+    "language_english": "English",
+    "language_arabic_short": "عربي",
+    "language_arabic_full": "العربية"
+  },
+  "file_download": {
+    "success": "تم تحميل الملف بنجاح.",
+    "failed": "فشل تحميل الملف. حاول مرة أخرى."
+  },
+  "core": {
+    "no_content": "لا يوجد محتوى",
+    "error_title": "حدث خطأ ما",
+    "error_desc": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى أو الاتصال بالدعم إذا استمرت المشكلة.",
+    "reload": "اعادة التحميل",
+    "documents_and_photos": "المستندات والصور",
+    "upload_tap_or_drag": "انقر للتحميل أو اسحب وأفلت",
+    "upload_image": "تحميل صورة",
+    "upload_file": "تحميل ملف"
+  },
+
+  "error_screen": {
+    "title": "حدث خطأ ما",
+    "subtitle": "حدث خطأ غير متوقع، تم تسجيله\nوسيقوم فريقنا بمراجعته.",
+    "error_details": "تفاصيل الخطأ",
+    "show_stack": "عرض تتبع المكدس",
+    "hide_stack": "إخفاء تتبع المكدس",
+    "copy_report": "نسخ تقرير الخطأ",
+    "copied": "تم النسخ!",
+    "try_again": "حاول مجدداً",
+    "no_stack": "لا يوجد تتبع للمكدس",
+    "inline_message": "حدث خطأ في هذا الجزء"
+  }
+ 
+}
