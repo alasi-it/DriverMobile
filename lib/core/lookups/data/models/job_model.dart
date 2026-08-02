@@ -1,5 +1,3 @@
-import 'package:isnad_worker/core/constant/app_assets.dart';
-
 class JobModel {
   String? id;
   String? code;
@@ -22,7 +20,7 @@ class JobModel {
     return JobModel(
       id: json['jobTitle']?['id'] as String?,
       code: name,
-      iconPath: AppIcons.driverIcon,
+      iconPath: '',
     );
   }
 }
