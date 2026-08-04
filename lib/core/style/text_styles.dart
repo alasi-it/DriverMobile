@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextStyles {
-  static String get fontFamily => 'Bukra';
+  static String get fontFamily => 'cairo';
 
   static TextStyle ts(double size, FontWeight weight, {Color? color}) {
     return TextStyle(

@@ -29,5 +29,22 @@
     "try_again": "Try Again",
     "no_stack": "No Stack Trace Available",
     "inline_message": "An error occurred in this section"
-  }
+  },
+   
+  "OnBoarding": {
+    "skip": "Skip",
+    "item1": {
+      "title": "Receive transport tasks and start your journey with confidence",
+      "body": "Easily receive new transport requests and view all task details, including the pickup location and destination."
+    },
+    "item2": {
+      "title": "Track all your trips and tasks in one place",
+      "body": "View your daily trip schedule and monitor the status of each task in real time, with quick access to trip details and pickup and delivery information."
+    },
+    "item3": {
+      "title": "Complete transport operations efficiently and arrive on time",
+      "body": "Carry out transport trips safely and easily, complete the delivery process in just a few simple steps, and instantly update the task status to ensure a professional and reliable operational experience."
+    }
+  
+}
 }

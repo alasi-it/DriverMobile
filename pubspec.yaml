@@ -120,35 +120,27 @@ flutter:
     - assets/fonts/
     - assets/lottie/
 
-  # fonts:
-  #   - family: Bukra
-  #     fonts:
-  #       - asset: assets/fonts/cairo/Cairo-ExtraLight.ttf
-  #         weight: 200
-  #       - asset: assets/fonts/cairo/Cairo-Light.ttf
-  #         weight: 300
-  #       - asset: assets/fonts/cairo/Cairo-Regular.ttf
-  #         weight: 400
-  #       - asset: assets/fonts/cairo/Cairo-Medium.ttf
-  #         weight: 500
-  #       - asset: assets/fonts/cairo/Cairo-SemiBold.ttf
-  #         weight: 600
-  #       - asset: assets/fonts/cairo/Cairo-Bold.ttf
-  #         weight: 700
-  #       - asset: assets/fonts/cairo/Cairo-ExtraBold.ttf
-  #         weight: 800
-  #       - asset: assets/fonts/cairo/Cairo-Black.ttf
-  #         weight: 900
-        # - asset: assets/fonts/29LT Bukra Lt.ttf
-        #   weight: 300
-        # - asset: assets/fonts/29lt-bukra-regular.ttf
-        #   weight: 400
-        # - asset: assets/fonts/29LT Bukra Md.ttf
-        #   weight: 500
-        # - asset: assets/fonts/29LT Bukra Variable.ttf
-        #   weight: 600
-        # - asset: assets/fonts/29LT Bukra Bold.ttf
-        #   weight: 700
+
+  fonts:
+    - family: cairo
+      fonts:
+        - asset: assets/fonts/cairo/Cairo-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/cairo/Cairo-Light.ttf
+          weight: 300
+        - asset: assets/fonts/cairo/Cairo-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/cairo/Cairo-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/cairo/Cairo-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/cairo/Cairo-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/cairo/Cairo-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/cairo/Cairo-Black.ttf
+          weight: 900
+
 
 # flutter_native_splash:
 #   web: false

@@ -9,12 +9,12 @@ class AppTheme {
   static final ThemeData light = ThemeData(
     useMaterial3: false,
     brightness: Brightness.light,
-    fontFamily: 'Bukra',
+    fontFamily: 'cairo',
     primaryColor: AppColors.primary,
 
     splashColor: Colors.transparent,
     textTheme: ThemeData.light().textTheme.apply(
-      fontFamily: 'Bukra',
+      fontFamily: 'cairo',
       bodyColor: AppColors.textLight,
       displayColor: AppColors.textLight,
     ),
@@ -145,14 +145,14 @@ class AppTheme {
     primaryColor: AppColors.primary,
     splashColor: Colors.transparent,
 
-    fontFamily: 'Bukra',
+    fontFamily: 'cairo',
     highlightColor: Colors.transparent,
 
     visualDensity: VisualDensity.adaptivePlatformDensity,
     scaffoldBackgroundColor: AppColors.backgroundPrimaryDark,
     cardTheme: CardThemeData(color: AppColors.backgroundSecondaryDark),
     textTheme: ThemeData.light().textTheme.apply(
-      fontFamily: 'Bukra',
+      fontFamily: 'cairo',
       bodyColor: AppColors.textDark,
       displayColor: AppColors.textDark,
     ),

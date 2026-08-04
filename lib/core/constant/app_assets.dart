@@ -6,11 +6,14 @@ class AppImages {
   static String defaultImage = '$_images/profile_def.png';
   static String emptyImage = '$_images/empty_icon.png';
   static String successImage = '$_images/succ.png';
+  static String carImage = '$_images/car_image.png';
+  static String onboarding3 = '$_images/onboarding3.png';
+  static String onboarding2 = '$_images/onboarding2.png';
+  static String onboarding = '$_images/onboarding.png';
 }
 
 class AppIcons {
   static final String _icons = 'assets/icons';
-
   static String splachLogo = '$_icons/splach_logo.svg';
   static String gridIcon = '$_icons/grid_view.svg';
   static String dropDownIcon = '$_icons/arrow-down.svg';

@@ -7,7 +7,7 @@ import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
 import 'package:lottie/lottie.dart';
 
-const String _kFont = 'Bukra';
+const String _kFont = 'cairo';
 
 class ErrorScreen extends StatefulWidget {
   final Object error;
@@ -248,7 +248,7 @@ class _ErrorScreenState extends State<ErrorScreen>
         Text(
           widget.error.toString(),
           style: AppTextStyles.font12Regular.copyWith(
-            fontFamily: 'Bukra',
+            fontFamily: 'cairo',
             color: AppColors.typographyHeading.withOpacity(0.85),
             height: 1.6,
           ),
@@ -302,7 +302,7 @@ class _ErrorScreenState extends State<ErrorScreen>
       child: Text(
         widget.stackTrace?.toString() ?? 'error_screen.no_stack'.tr(),
         style: AppTextStyles.font10Regular.copyWith(
-          fontFamily: 'Bukra',
+          fontFamily: 'cairo',
           color: AppColors.typographyHeading.withOpacity(0.4),
           height: 1.6,
         ),
