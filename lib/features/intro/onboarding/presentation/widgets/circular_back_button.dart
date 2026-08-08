@@ -40,8 +40,8 @@ class _CircularBackButtonState extends State<CircularBackButton> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
         curve: Curves.easeInOut,
-        width: 64.w,
-        height: 64.h,
+        width: 72.w,
+        height: 72.h,
         child: Stack(
           alignment: Alignment.center,
           children: [
@@ -51,11 +51,12 @@ class _CircularBackButtonState extends State<CircularBackButton> {
               curve: Curves.easeInOut,
               builder: (context, value, child) {
                 return CustomPaint(
-                  size: Size(64.w, 64.h),
+                  size: Size(72.w, 72.h),
                   painter: _ProgressRingPainter(
                     progress: value,
-                    color: const Color(0xFFA8EAEF),
-                    strokeWidth: _isPressed ? 4 : 2,
+                    activeColor: AppColors.primary200,
+                    inactiveColor: AppColors.white,
+                    strokeWidth: _isPressed ? 8 : 5,
                   ),
                 );
               },
@@ -93,17 +94,16 @@ class _CircularBackButtonState extends State<CircularBackButton> {
   }
 }
 
-/// Draws the progress track around the back button: the completed portion
-/// as a glowing solid arc, the remaining portion as a dashed arc, both
-/// starting at 12 o'clock and sweeping clockwise.
 class _ProgressRingPainter extends CustomPainter {
   final double progress;
-  final Color color;
+  final Color activeColor;
+  final Color inactiveColor;
   final double strokeWidth;
 
   _ProgressRingPainter({
     required this.progress,
-    required this.color,
+    required this.activeColor,
+    required this.inactiveColor,
     required this.strokeWidth,
   });
 
@@ -141,7 +141,7 @@ class _ProgressRingPainter extends CustomPainter {
     final rect = Rect.fromCircle(center: center, radius: radius);
 
     final glowPaint = Paint()
-      ..color = color.withValues(alpha: 0.55)
+      ..color = activeColor.withValues(alpha: 0.60)
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth * 3
       ..strokeCap = StrokeCap.round
@@ -149,7 +149,7 @@ class _ProgressRingPainter extends CustomPainter {
     canvas.drawArc(rect, start, sweep, false, glowPaint);
 
     final corePaint = Paint()
-      ..color = color
+      ..color = activeColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth
       ..strokeCap = StrokeCap.round;
@@ -166,14 +166,13 @@ class _ProgressRingPainter extends CustomPainter {
     if (sweep <= 0) return;
 
     final paint = Paint()
-      ..color = color
+      ..color = inactiveColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth
       ..strokeCap = StrokeCap.round;
 
     final circumference = 2 * math.pi * radius;
-    final stepAngle =
-        (_dashLength + _gapLength) / circumference * 2 * math.pi;
+    final stepAngle = (_dashLength + _gapLength) / circumference * 2 * math.pi;
     final dashAngle = _dashLength / circumference * 2 * math.pi;
     final rect = Rect.fromCircle(center: center, radius: radius);
 
@@ -189,7 +188,8 @@ class _ProgressRingPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant _ProgressRingPainter oldDelegate) {
     return oldDelegate.progress != progress ||
-        oldDelegate.color != color ||
+        oldDelegate.activeColor != activeColor ||
+        oldDelegate.inactiveColor != inactiveColor ||
         oldDelegate.strokeWidth != strokeWidth;
   }
 }

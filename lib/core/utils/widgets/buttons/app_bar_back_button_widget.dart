@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:isnad_worker/core/style/app_dimensions.dart';
+import 'package:isnad_worker/core/style/app_colors.dart';
 
 class AppBarBackButtonWidget extends StatelessWidget {
   const AppBarBackButtonWidget({
@@ -20,10 +20,10 @@ class AppBarBackButtonWidget extends StatelessWidget {
         margin: EdgeInsetsDirectional.only(start: 16.w),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Theme.of(context).colorScheme.tertiaryContainer,
-          boxShadow: [AppDimensions.secondaryShadow],
+          color: AppColors.primary900.withOpacity(.20),
+          // boxShadow: [AppDimensions.secondaryShadow],
         ),
-        child: Icon(icon, size: 16.r),
+        child: Icon(icon, size: 16.r, color: AppColors.primary),
       ),
     );
   }

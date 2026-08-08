@@ -8,6 +8,7 @@ import 'package:isnad_worker/core/network/connectivity/network_cubit.dart';
 import 'package:isnad_worker/core/routing/app_navigator.dart';
 import 'package:isnad_worker/core/style/app_theme.dart';
 import 'package:isnad_worker/core/utils/controllers/theme/theme_cubit.dart';
+import 'package:isnad_worker/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:isnad_worker/features/intro/splash/presentation/screens/splash_screen.dart';
 
 class MainApplication extends StatelessWidget {
@@ -33,6 +34,7 @@ class MainApplication extends StatelessWidget {
                 ),
               ),
               BlocProvider(create: (_) => ThemeCubit()..getSettings()),
+              BlocProvider(create: (_) => AuthCubit()),
               // BlocProvider(
               //   lazy: false,
               //   create: (_) => LookupsCubit()..loadAll(),

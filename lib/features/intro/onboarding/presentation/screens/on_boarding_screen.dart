@@ -7,7 +7,7 @@ import 'package:isnad_worker/core/routing/app_navigator.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
 import 'package:isnad_worker/core/utils/widgets/layout/custom_app_bar.dart';
-import 'package:isnad_worker/features/home/presentation/home_screen.dart';
+import 'package:isnad_worker/features/auth/presentation/screens/login_phone_screen.dart';
 import 'package:isnad_worker/features/intro/onboarding/presentation/screens/on_boarding_items.dart';
 import 'package:isnad_worker/features/intro/onboarding/presentation/widgets/on_boarding_bottom_bar_widget.dart';
 import 'package:isnad_worker/features/intro/onboarding/presentation/widgets/on_boarding_page_content_widget.dart';
@@ -50,7 +50,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     await CacheHelper.save(CacheKeys.firstUse, false).then((_) {
       // AppNavigator.remove(const LoginScreen());
-      AppNavigator.remove(const HomeScreen());
+      AppNavigator.remove(const LoginPhoneScreen());
     });
   }
 

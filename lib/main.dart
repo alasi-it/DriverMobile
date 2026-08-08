@@ -27,7 +27,6 @@ void main() async {
   await ServiceLocator().init();
   await HiveService.init();
   // await FirebaseNotifications.initialize();
-
   // NOTIFICATIONS
   // await FirebaseNotifications.initialize();
   // await LocalNotificationService.initialize();

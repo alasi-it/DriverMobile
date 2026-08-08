@@ -45,6 +45,167 @@
       "title": "أنجز عمليات النقل بكفاءة ووصل في الوقت المحدد",
       "body": "نفّذ رحلات النقل بأمان وسهولة، وأكمل إجراءات التسليم بخطوات بسيطة، مع تحديث حالة المهمة فورًا لضمان تجربة تشغيل احترافية وموثوقة."
     }
+  },
+    "auth": {
+    "login": {
+      "title": "يمكنك تسجيل الدخول باستخدام رقم الهاتف الخاص بك أو عبر البريد الإلكتروني المسجل لدينا",
+      "or": "او",
+      "subtitle": "برجاء ادخال رقم الهاتف ",
+      "register_with_ID_number": "تسجيل برقم الهوية",
+      "phone": {
+        "title": "رقم الهاتف"
+      },
+      "password": {
+        "title": "كلمة المرور"
+      },
+      "login_with_ID_number": "تسجيل الدخول برقم الهوية",
+      "subtitle_with_ID_number": "برجاء ادخال رقم الهوية وكلمة المرور",
+      "email": {
+        "title": "البريد الإلكتروني"
+      },
+      "button": "تسجيل الدخول",
+      "forgot_password": "نسيت كلمة المرور",
+      "no_account": "ليس لديك حساب؟",
+      "register_here": "تسجيل هنا",
+      "id": "رقم الهوية",
+      "not_allowed": "هذا الحساب غير مصرح له بالدخول",
+      "login_with_email": "تسجيل الدخول بالبريد الإلكتروني",
+      "login_with_phone": "تسجيل الدخول برقم الجوال"
+    },
+    "register": {
+      "title": "تسجيل حساب جديد",
+      "subtitle": "برجاء ادخال رقم الهاتف ",
+      "email": {
+        "title": "البريد الإلكتروني"
+      },
+      "button": "تسجيل",
+      "full_name": "الاسم الكامل",
+      "national_id": "رقم الهوية",
+      "gender": "الجنس",
+      "gender_hint": "اختر الجنس",
+      "gender_male": "ذكر",
+      "gender_female": "أنثى"
+    },
+    "forgot_password": {
+      "title": "برجاء ادحال البريد الالكتروني ",
+      "phone_title": "برجاء ادحال رقم الهاتف ",
+      "subtitle": "ادخل البريد الالكتروني للاسترداد كلمة المرور الخاصة بك",
+      "phone_subtitle": "ادخل رقم الهاتف للاسترداد كلمة المرور الخاصة بك",
+      "phone": {
+        "title": "رقم الهاتف"
+      },
+      "button": "استرداد كلمة المرور"
+    },
+    "reset_Password": {
+      "title": "برجاء ادخال رقم الهاتف ",
+      "subtitle": "ادخل كلمه المرور الجديده",
+      "button": "تعيين كلمة المرور",
+      "password": "كلمة المرور",
+      "re_password": "إعادة كلمة المرور"
+    },
+    "verify_email": {
+      "title": "تأكيد البريد الالكتروني",
+      "subtitle": "برجاء ادخال رقم التحقق المرسل الي رقم البريد الالكتروني",
+      "no_code": "لم يصلك الرمز ؟",
+      "resend": "إعادة الارسال",
+      "button_confirm": "تأكيد رقم الكود"
+    },
+    "login_with_google": "تسجيل الدخول عبر حساب جوجل"
+  },
+   "validators": {
+    "required": "الحقل مطلوب",
+    "full_name_two_words": "يجب إدخال الاسم مكون من كلمتين",
+    "name_invalid": "الاسم يجب أن يحتوي على حروف فقط",
+    "password_too_short": "كلمة المرور يجب ان تكون اكثر من 6 حروف",
+    "length": {
+      "min": "يجب ألا يقل الطول عن {length} حرفًا",
+      "max": "يجب ألا يزيد الطول عن {length} حرفًا",
+      "exact": "يجب أن يكون الطول بالضبط {length} حرفًا"
+    },
+    "stock_min_length": "يجب أن تكون الكمية أكبر من صفر",
+    "email": {
+      "required": "البريد الإلكتروني مطلوب",
+      "pattern": "البريد الإلكتروني غير صالح"
+    },
+    "password": {
+      "required": "كلمة المرور مطلوبة",
+      "old_new_same": "كلمة المرور القديمة لا يمكن أن تكون نفس الجديدة",
+      "identical": "كلمتا المرور غير متطابقتين"
+    },
+    "phone": {
+      "phone_required": "رقم الهاتف مطلوب",
+      "phone_too_short": "رقم الهاتف قصير ",
+      "phone_too_long": "رقم الهاتف طويل",
+      "required": "رقم الهاتف مطلوب",
+      "invalid": "رقم الهاتف غير صالح"
+    },
+    "numbers": {
+      "only": "يجب أن يكون الرقم مكونًا من أرقام فقط",
+      "exact_length": "يجب أن يكون الطول بالضبط {length}",
+      "less_than": "يجب أن يكون الرقم أقل من {max}",
+      "range": "يجب أن يكون الرقم بين {min} و {max}",
+      "greater_than": "يجب أن يكون الرقم أكبر من {min}"
+    },
+    "OTP": {
+      "required": "كود التحقق مطلوب",
+      "length": "كود التحقق يجب أن يكون 4 أرقام"
+    },
+    "files": {
+      "required": "الملف مطلوب",
+      "size_exceeded": "حجم الملف يتجاوز الحد المسموح ({max}MB)"
+    }
+  },
+    "home": {
+    "how_can_help": "كيف يمكننا مساعدتك اليوم ؟",
+    "welcome": "مرحبا",
+    "search": "ابحث",
+    "show_all": "عرض الكل",
+    "available_services": "الخدمات المتاحة",
+    "recruitment_service": "خدمة استقدام",
+    "labor_leasing": "تأجير العمالة",
+    "complaints": "الشكاوي",
+    "sponsorship_transfer": "نقل الكفالة",
+    "suggested_workers": "عمالة مقترحين (استقدام)",
+    "welcome_with_name": "مرحباً، {name}",
+    "service_all": "الكل",
+    "recruitingـworkers": "استقدام العمالة",
+    "order_card": {
+      "requests": "طلبات",
+      "passengers": "راكب",
+      "status": {
+        "active": "نشطة",
+        "pending": "قيد الانتظار",
+        "completed": "مكتملة",
+        "cancelled": "ملغاة"
+      },
+      "timeline": {
+        "shipped": "تم الشحن",
+        "loaded": "تم التعبئة",
+        "on_the_way": "في الطريق",
+        "arrived": "تم الوصول"
+      }
+    }
+  },
+  "trips": {
+    "details": {
+      "scheduled_date": "التاريخ المجدول",
+      "scheduled_time": "الوقت المجدول",
+      "assigned_vehicle": "المركبة المخصصة",
+      "total_passengers": "إجمالي الركاب",
+      "cancelled": "ملغية",
+      "confirmed": "مؤكدة",
+      "transfer_requests": "طلبات نقل"
+    },
+    "request_item": {
+      "pickup_point": "نقطة الالتقاط",
+      "destination": "الوجهة",
+      "cancel_request": "إلغاء الطلب",
+      "confirm_delivery": "تأكيد التسليم",
+      "status": {
+        "unconfirmed": "غير مؤكد",
+        "confirmed": "مؤكد",
+        "cancelled": "ملغي"
+      }
+    }
   }
- 
 }

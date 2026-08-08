@@ -10,7 +10,6 @@ import 'package:isnad_worker/core/network/local/cache/secure_storage.dart';
 import 'package:isnad_worker/core/routing/app_navigator.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/utils/logger/logger.dart';
-import 'package:isnad_worker/features/home/presentation/home_screen.dart';
 import 'package:isnad_worker/features/intro/onboarding/presentation/screens/on_boarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,24 +20,39 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
+  late final AnimationController _enterController;
   late final AnimationController _controller;
+  late final Animation<double> _carEnterProgress;
   late final Animation<double> _carDriveProgress;
   late final Animation<double> _carFadeProgress;
   late final Animation<double> _logoFadeProgress;
+  late final Animation<double> _backgroundCompleteProgress;
+
+  bool _showAnimation = false;
 
   @override
   void initState() {
     super.initState();
 
+    _enterController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+    _carEnterProgress = CurvedAnimation(
+      parent: _enterController,
+      curve: Curves.easeOut,
+    );
+
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: 4000),
     );
 
     _carDriveProgress = CurvedAnimation(
       parent: _controller,
-      curve: const Interval(0.0, 0.65, curve: Curves.easeInOutCubic),
+      curve: const Interval(0.0, 0.65, curve: Curves.easeInOutSine),
     );
 
     _carFadeProgress = CurvedAnimation(
@@ -51,7 +65,25 @@ class _SplashScreenState extends State<SplashScreen>
       curve: const Interval(0.85, 1.0, curve: Curves.easeIn),
     );
 
-    _controller.forward().then((_) => _navigate());
+    _backgroundCompleteProgress = CurvedAnimation(
+      parent: _controller,
+      curve: const Interval(0.65, 0.85, curve: Curves.easeOut),
+    );
+
+    _startSequence();
+  }
+
+  Future<void> _startSequence() async {
+    await Future.delayed(const Duration(milliseconds: 700));
+    if (!mounted) return;
+
+    setState(() => _showAnimation = true);
+
+    await _enterController.forward();
+    if (!mounted) return;
+
+    await _controller.forward();
+    _navigate();
   }
 
   Future<void> _navigate() async {
@@ -72,13 +104,9 @@ class _SplashScreenState extends State<SplashScreen>
       if (isFirstUse) {
         AppNavigator.remove(const OnBoardingScreen());
       } else if (token != null) {
-        AppNavigator.remove(const HomeScreen());
-
-        // AppNavigator.remove(const MainHomeScreen());
+        AppNavigator.remove(const OnBoardingScreen());
       } else {
-        AppNavigator.remove(const HomeScreen());
-
-        // AppNavigator.remove(const LoginScreen());
+        AppNavigator.remove(const OnBoardingScreen());
       }
     } catch (e, st) {
       AppLogger.error('Navigation failed', e, st, 'Navigation');
@@ -87,12 +115,17 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void dispose() {
+    _enterController.dispose();
     _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (!_showAnimation) {
+      return const Scaffold(backgroundColor: AppColors.white);
+    }
+
     return Scaffold(
       backgroundColor: AppColors.white,
       body: LayoutBuilder(
@@ -104,27 +137,38 @@ class _SplashScreenState extends State<SplashScreen>
 
           final carTop = (size.height - carHeight) / 2;
 
-          final carStartLeft = size.width * .02;
+          final carEnterStartLeft = -carWidth;
+          final carRestLeft = size.width * .02;
           final carExitLeft = size.width * 1.15;
 
           return AnimatedBuilder(
-            animation: _controller,
+            animation: Listenable.merge([_enterController, _controller]),
             builder: (context, _) {
-              final carLeft = ui.lerpDouble(
-                carStartLeft,
+              final driveCarLeft = ui.lerpDouble(
+                carRestLeft,
                 carExitLeft,
                 _carDriveProgress.value,
               )!;
 
-              final carOpacity = (1 - _carFadeProgress.value).clamp(0.0, 1.0);
-
-              final trailEdgeX = ui.lerpDouble(
-                0,
-                size.width,
-                _carDriveProgress.value,
+              final carLeft = ui.lerpDouble(
+                carEnterStartLeft,
+                driveCarLeft,
+                _carEnterProgress.value,
               )!;
 
-              final spread = ui.lerpDouble(40, 260, _carDriveProgress.value)!;
+              final carOpacity = (1 - _carFadeProgress.value).clamp(0.0, 1.0);
+
+              final carRearX = carLeft;
+
+              final spread = carHeight * 0.55;
+
+              final rawTrailEdgeX = carRearX - spread * 1.5;
+
+              final trailEdgeX = ui.lerpDouble(
+                rawTrailEdgeX,
+                size.width,
+                _backgroundCompleteProgress.value,
+              )!;
 
               return Stack(
                 children: [
@@ -187,17 +231,28 @@ class _CarTrailClipper extends CustomClipper<Path> {
 
   @override
   Path getClip(Size size) {
-    final x = edgeX.clamp(0.0, size.width);
+    final x = edgeX;
     final y = size.height / 2;
 
-    final head = spread * 1.15;
-    final tail = spread * 2.3;
+    final head = spread * 1.6;
+    final tail = spread * 3;
+    final noseRadius = spread * 0.6;
+
+    final noseX = x + tail;
 
     return Path()
       ..moveTo(0, 0)
       ..lineTo(x, 0)
-      ..cubicTo(x, y - head, x + tail * .35, y - head * .45, x + tail, y)
-      ..cubicTo(x + tail, y + head * .45, x, y + head, x, size.height)
+      ..cubicTo(
+        x,
+        y - head,
+        x + tail * .35,
+        y - head * .45,
+        noseX - noseRadius,
+        y - noseRadius * .7,
+      )
+      ..quadraticBezierTo(noseX, y, noseX - noseRadius, y + noseRadius * .7)
+      ..cubicTo(x + tail * .35, y + head * .45, x, y + head, x, size.height)
       ..lineTo(0, size.height)
       ..close();
   }

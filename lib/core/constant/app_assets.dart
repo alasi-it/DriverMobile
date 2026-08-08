@@ -10,10 +10,14 @@ class AppImages {
   static String onboarding3 = '$_images/onboarding3.png';
   static String onboarding2 = '$_images/onboarding2.png';
   static String onboarding = '$_images/onboarding.png';
+  // static String googleLogoIcon = '$_images/google 1.png';
 }
 
 class AppIcons {
   static final String _icons = 'assets/icons';
+  static String logo = '$_icons/logo.svg';
+  static String searchIcon = '$_icons/search_icon.svg';
+
   static String splachLogo = '$_icons/splach_logo.svg';
   static String gridIcon = '$_icons/grid_view.svg';
   static String dropDownIcon = '$_icons/arrow-down.svg';
@@ -22,4 +26,10 @@ class AppIcons {
   static String searchFiltterIcon = '$_icons/search-normal.svg';
   static String filterIcon = '$_icons/filter_icon.svg';
   static String uploadFileIcon = '$_icons/mdi_cloud-upload.svg';
+  static String closeIcon = '$_icons/close.svg';
+  static String successIcon = '$_icons/success.svg';
+  static String loginPhoneImage = '$_icons/phone_login.svg';
+  static String loginEmailImage = '$_icons/email_login.svg';
+  static String notificationBellIcon = '$_icons/not_icon.svg';
+  static String carIcon = '$_icons/clarity_car-solid.svg';
 }

@@ -8,13 +8,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onBackPressed;
   final List<Widget>? actions;
   final Widget? leading;
+  final Widget? titleWidget;
+  final bool centerTitle;
 
   const CustomAppBar({
     super.key,
-    required this.title,
+    this.title = '',
     this.leading,
     this.onBackPressed,
+    this.titleWidget,
     this.actions,
+    this.centerTitle = true,
   });
 
   @override
@@ -25,9 +29,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     final canPop = Navigator.canPop(context);
 
     return AppBar(
-      title: Text(title, style: AppTextStyles.font20Bold),
+      title: Padding(
+        padding: EdgeInsetsDirectional.only(start: 16.w),
+        child: titleWidget ?? Text(title, style: AppTextStyles.font20Bold),
+      ),
       backgroundColor: Colors.transparent,
-      centerTitle: true,
+      centerTitle: centerTitle,
       automaticallyImplyLeading: false,
       actions: actions != null
           ? [
