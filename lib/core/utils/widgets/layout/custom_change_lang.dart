@@ -1,10 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:isnad_worker/core/utils/helper/app_locals.dart';
+import 'package:isnad_worker/core/utils/controllers/locale/locale_cubit.dart';
 
-import '../../../../../core/network/local/cache/cache_helper.dart';
 import '../../../../../core/style/app_colors.dart';
+import 'app_container.dart';
 
 class CustomChangeLang extends StatelessWidget {
   const CustomChangeLang({super.key});
@@ -19,18 +20,15 @@ class CustomChangeLang extends StatelessWidget {
         ? AppColors.typographySubtitleDark
         : AppColors.typographySubtitleLight;
 
-    final rawLang = CacheHelper.get('lang');
-    final String currentLang =
-        rawLang is String && (rawLang == 'ar' || rawLang == 'en')
-        ? rawLang
-        : 'en';
+    final String currentLang = context
+        .watch<LocaleCubit>()
+        .state
+        .languageCode;
 
-    return Container(
+    return AppContainer(
       padding: EdgeInsets.symmetric(horizontal: 10.w),
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(16),
-      ),
+      color: Colors.transparent,
+      borderRadius: BorderRadius.circular(16),
       child: DropdownButton<String>(
         value: currentLang,
         underline: Container(),
@@ -39,7 +37,7 @@ class CustomChangeLang extends StatelessWidget {
         onChanged: (String? newValue) async {
           if (newValue == null || newValue == currentLang) return;
 
-          await AppLocales.setDeviceLocale(newValue == 'ar' ? 0 : 1);
+          await context.read<LocaleCubit>().setLanguageCode(newValue);
         },
         items: ['en', 'ar']
             .map(

@@ -7,7 +7,6 @@ import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
 import 'package:isnad_worker/core/utils/models/filter_model.dart';
 import 'package:isnad_worker/core/utils/widgets/fields/custom_field_text.dart';
-import 'package:isnad_worker/core/utils/widgets/filters/filter_sheet_widget.dart';
 import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 
 class CustomSearchFiledWithFilterWidget extends StatelessWidget {
@@ -54,54 +53,64 @@ class CustomSearchFiledWithFilterWidget extends StatelessWidget {
               hintText: hintText ?? 'home.search'.tr(),
               hintStyle: AppTextStyles.font13Regular,
               style: AppTextStyles.font13Regular,
-              iconEndWidget: GestureDetector(
-                onTap: () async {
-                  FilterModel? result = await showModalBottomSheet(
-                    context: context,
-                    useSafeArea: true,
-                    isScrollControlled: true,
+              borderRadius: 32.r,
 
-                    builder: (_) => FilterSheet(
-                      showJobs: showJobs,
-                      showSkills: showSkills,
-                      showLang: showLang,
-                      showGender: showGender,
-                      initialFilter: activeFilter,
-                    ),
-                  );
-                  if (result == null) return;
+              padding: EdgeInsets.all(12.w),
+              // iconEndWidget: GestureDetector(
+              //   onTap: () async {
+              //     FilterModel? result = await showModalBottomSheet(
+              //       context: context,
+              //       useSafeArea: true,
+              //       isScrollControlled: true,
 
-                  onFilter?.call(result);
-                },
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 12.w,
-                    vertical: 4.h,
-                  ),
-                  child: AppContainer(
-                    padding: EdgeInsets.all(8.r),
-                    boxShadow: [],
-                    color: makefilter
-                        ? AppColors.primary.withOpacity(.4)
-                        : AppColors.grey50,
-                    child: SvgPicture.asset(
-                      AppIcons.filterIcon,
-                      width: 16.w,
-                      height: 16.h,
-                    ),
-                  ),
-                ),
-              ),
+              //       builder: (_) => FilterSheet(
+              //         showJobs: showJobs,
+              //         showSkills: showSkills,
+              //         showLang: showLang,
+              //         showGender: showGender,
+              //         initialFilter: activeFilter,
+              //       ),
+              //     );
+              //     if (result == null) return;
+
+              //     onFilter?.call(result);
+              //   },
+              //   child: Padding(
+              //     padding: EdgeInsets.symmetric(
+              //       horizontal: 12.w,
+              //       vertical: 4.h,
+              //     ),
+              //     child: AppContainer(
+              //       padding: EdgeInsets.all(8.r),
+              //       boxShadow: [],
+              //       color: makefilter
+              //           ? AppColors.primary.withOpacity(.4)
+              //           : AppColors.grey50,
+              //       child: SvgPicture.asset(
+              //         AppIcons.filterIcon,
+              //         width: 16.w,
+              //         height: 16.h,
+              //       ),
+              //     ),
+              //   ),
+              // ),
               iconStart: AppIcons.searchFiltterIcon,
             ),
           ),
           if (showAddIcon)
             GestureDetector(
               onTap: onAddTap,
-              child: CircleAvatar(
-                radius: 24.r,
-                backgroundColor: AppColors.primary,
-                child: Icon(Icons.add, color: AppColors.white),
+              child: AppContainer(
+                boxShadow: [],
+                padding: EdgeInsets.all(12.r),
+                shape: BoxShape.circle,
+                color: AppColors.white,
+                border: Border.all(color: AppColors.grey100),
+                child: SvgPicture.asset(
+                  AppIcons.mageFilter,
+                  height: 22.h,
+                  width: 22.w,
+                ),
               ),
             ),
         ],

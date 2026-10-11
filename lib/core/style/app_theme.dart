@@ -9,12 +9,12 @@ class AppTheme {
   static final ThemeData light = ThemeData(
     useMaterial3: false,
     brightness: Brightness.light,
-    fontFamily: 'cairo',
+    fontFamily: 'Bukra',
     primaryColor: AppColors.primary,
 
     splashColor: Colors.transparent,
     textTheme: ThemeData.light().textTheme.apply(
-      fontFamily: 'cairo',
+      fontFamily: 'Bukra',
       bodyColor: AppColors.textLight,
       displayColor: AppColors.textLight,
     ),
@@ -145,14 +145,14 @@ class AppTheme {
     primaryColor: AppColors.primary,
     splashColor: Colors.transparent,
 
-    fontFamily: 'cairo',
+    fontFamily: 'Bukra',
     highlightColor: Colors.transparent,
 
     visualDensity: VisualDensity.adaptivePlatformDensity,
     scaffoldBackgroundColor: AppColors.backgroundPrimaryDark,
-    cardTheme: CardThemeData(color: AppColors.backgroundSecondaryDark),
+    cardTheme: CardThemeData(color: AppColors.cardBackgroundDark),
     textTheme: ThemeData.light().textTheme.apply(
-      fontFamily: 'cairo',
+      fontFamily: 'Bukra',
       bodyColor: AppColors.textDark,
       displayColor: AppColors.textDark,
     ),
@@ -166,7 +166,7 @@ class AppTheme {
       surface: AppColors.cardBackgroundDark,
       onSurface: AppColors.typographyBodyDark,
       onPrimary: AppColors.white,
-      error: AppColors.errorText,
+      error: AppColors.errorColorDark,
       onError: AppColors.white,
       onSecondary: AppColors.typographyBodyDark,
       brightness: Brightness.dark,
@@ -197,7 +197,7 @@ class AppTheme {
       hintStyle: AppTextStyles.font14Medium,
       labelStyle: AppTextStyles.font14Medium,
       contentPadding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
-      fillColor: AppColors.backgroundSecondaryDark,
+      fillColor: AppColors.inputBackgroundDark,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12.r),
         borderSide: BorderSide(color: AppColors.inputOutlineDark),

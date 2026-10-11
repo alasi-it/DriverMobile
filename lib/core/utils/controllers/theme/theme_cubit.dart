@@ -3,49 +3,49 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../network/local/cache/cache_helper.dart';
-import '../../../routing/app_navigator.dart';
+import '../../../network/local/cache/cache_keys.dart';
 import '../../../style/app_colors.dart';
 
 part 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
-  ThemeCubit() : super(ThemeInitial());
+  ThemeCubit() : super(_initialState()) {
+    AppColors.updateTheme(state.isDark);
+  }
 
   static ThemeCubit get(BuildContext context) => BlocProvider.of(context);
 
-  ThemeMode mode = ThemeMode.light;
-  bool isDark = false;
-
-  Future<void> getSettings() async {
-    final String theme = CacheHelper.get('theme') ?? 'light';
-    isDark = theme == 'dark';
-    mode = isDark ? ThemeMode.dark : ThemeMode.light;
-    AppColors.updateTheme(isDark);
-    emit(ThemeChanged());
+  static ThemeState _initialState() {
+    final isDark = CacheHelper.get(CacheKeys.theme) == CacheKeys.themeDark;
+    return ThemeState(isDark: isDark, pendingIsDark: isDark);
   }
 
-  Future<void> changeTheme() async {
-    emit(ThemeLoading());
-    isDark = !isDark;
-    mode = isDark ? ThemeMode.dark : ThemeMode.light;
-    await CacheHelper.save('theme', isDark ? 'dark' : 'light');
+  bool get isDark => state.isDark;
+  ThemeMode get mode => state.mode;
+
+  /// Marks a theme as selected without applying it.
+  void selectTheme(bool isDark) => emit(state.copyWith(pendingIsDark: isDark));
+
+  /// Drops the pending selection and goes back to the applied theme.
+  void resetSelection() => emit(state.copyWith(pendingIsDark: state.isDark));
+
+  /// Applies the pending selection.
+  Future<void> updateSelectedTheme() => setTheme(state.pendingIsDark);
+
+  Future<void> toggleTheme() => setTheme(!state.isDark);
+
+  Future<void> setTheme(bool isDark) async {
+    if (isDark == state.isDark) {
+      emit(state.copyWith(pendingIsDark: isDark));
+      return;
+    }
+    emit(state.copyWith(loading: true));
+    await CacheHelper.save(
+      CacheKeys.theme,
+      isDark ? CacheKeys.themeDark : CacheKeys.themeLight,
+    );
+    // AppColors getters must flip before the app rebuilds.
     AppColors.updateTheme(isDark);
-    emit(ThemeChanged());
+    emit(ThemeState(isDark: isDark, pendingIsDark: isDark));
   }
-
-  bool get currentIsDark => isDark;
-}
-
-void changeThemeMode() {
-  final bool isDark = CacheHelper.get('theme') == 'dark';
-  CacheHelper.save('theme', isDark ? 'light' : 'dark');
-  final context = AppNavigator.key.currentState!.context;
-  ThemeCubit.get(context).getSettings();
-}
-
-void restartApplication() {}
-
-class ThemeChangeObserver extends WidgetsBindingObserver {
-  @override
-  void didChangePlatformBrightness() {}
 }

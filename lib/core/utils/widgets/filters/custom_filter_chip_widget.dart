@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 
 class CustomFilterChipWidget extends StatelessWidget {
   const CustomFilterChipWidget({super.key, required this.title, this.onTap});
@@ -18,12 +19,10 @@ class CustomFilterChipWidget extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      child: Container(
+      child: AppContainer(
         padding: EdgeInsets.symmetric(vertical: 11.h, horizontal: 13.w),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: bgColor,
-        ),
+        borderRadius: BorderRadius.circular(12),
+        color: bgColor,
         child: Row(
           children: [
             Text(

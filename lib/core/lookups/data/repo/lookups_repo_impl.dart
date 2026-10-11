@@ -8,6 +8,11 @@ import 'package:isnad_worker/core/lookups/data/models/private_service_model.dart
 import 'package:isnad_worker/core/lookups/data/models/skill_model.dart';
 import 'package:isnad_worker/core/lookups/domain/repo/lookups_repo.dart';
 import 'package:isnad_worker/core/lookups/domain/use_case/get_cities_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_countries_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_job_titles_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_languages_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_private_services_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_skills_use_case.dart';
 import 'package:isnad_worker/core/network/errors/failure.dart';
 import 'package:isnad_worker/core/network/local/network_info.dart';
 import 'package:isnad_worker/core/network/remote/apis/hanlders/repo_impl_callhandler.dart';
@@ -18,72 +23,40 @@ class LookupsRepoImpl implements LookupsRepo {
 
   LookupsRepoImpl({required this.remoteDataSource, required this.networkInfo});
 
-  List<CountryModel>? _countriesCache;
-  List<JobModel>? _jobTitlesCache;
-  List<SkillModel>? _skillsCache;
-  List<LanguageModel>? _languagesCache;
-  List<PrivateServiceModel>? _privateServicesCache;
-
   @override
-  Future<Either<Failure, List<CountryModel>>> getCountries() async {
-    final cached = _countriesCache;
-    if (cached != null && cached.isNotEmpty) {
-      return Right(cached);
-    }
-
-    final result = await RepoImplCallHandler<List<CountryModel>>(networkInfo)(
-      () async {
-        return await remoteDataSource.getCountries();
-      },
+  Future<Either<Failure, List<CountryModel>>> getCountries(
+    GetCountriesUseCaseParams params,
+  ) async {
+    return await RepoImplCallHandler<List<CountryModel>>(networkInfo)(
+      () async => await remoteDataSource.getCountries(params),
     );
-
-    result.fold((_) {}, (data) => _countriesCache = data);
-    return result;
   }
 
   @override
-  Future<Either<Failure, List<JobModel>>> getJobTitles() async {
-    final cached = _jobTitlesCache;
-    if (cached != null && cached.isNotEmpty) {
-      return Right(cached);
-    }
-
-    final result = await RepoImplCallHandler<List<JobModel>>(networkInfo)(
-      () async {
-        return await remoteDataSource.getJobTitles();
-      },
+  Future<Either<Failure, List<JobModel>>> getJobTitles(
+    GetJobTitlesUseCaseParams params,
+  ) async {
+    return await RepoImplCallHandler<List<JobModel>>(networkInfo)(
+      () async => await remoteDataSource.getJobTitles(params),
     );
-
-    result.fold((_) {}, (data) => _jobTitlesCache = data);
-    return result;
   }
 
   @override
-  Future<Either<Failure, List<SkillModel>>> getSkills() async {
-    final cached = _skillsCache;
-    if (cached != null && cached.isNotEmpty) {
-      return Right(cached);
-    }
-
-    final result = await RepoImplCallHandler<List<SkillModel>>(networkInfo)(
-      () async => await remoteDataSource.getSkills(),
+  Future<Either<Failure, List<SkillModel>>> getSkills(
+    GetSkillsUseCaseParams params,
+  ) async {
+    return await RepoImplCallHandler<List<SkillModel>>(networkInfo)(
+      () async => await remoteDataSource.getSkills(params),
     );
-
-    result.fold((_) {}, (data) => _skillsCache = data);
-    return result;
   }
 
   @override
-  Future<Either<Failure, List<LanguageModel>>> getLanguages() async {
-    final cached = _languagesCache;
-    if (cached != null && cached.isNotEmpty) return Right(cached);
-
-    final result = await RepoImplCallHandler<List<LanguageModel>>(networkInfo)(
-      () async => await remoteDataSource.getLanguages(),
+  Future<Either<Failure, List<LanguageModel>>> getLanguages(
+    GetLanguagesUseCaseParams params,
+  ) async {
+    return await RepoImplCallHandler<List<LanguageModel>>(networkInfo)(
+      () async => await remoteDataSource.getLanguages(params),
     );
-
-    result.fold((_) {}, (data) => _languagesCache = data);
-    return result;
   }
 
   @override
@@ -96,18 +69,11 @@ class LookupsRepoImpl implements LookupsRepo {
   }
 
   @override
-  Future<Either<Failure, List<PrivateServiceModel>>>
-  getPrivateServices() async {
-    final cached = _privateServicesCache;
-    if (cached != null && cached.isNotEmpty) {
-      return Right(cached);
-    }
-
-    final result = await RepoImplCallHandler<List<PrivateServiceModel>>(
-      networkInfo,
-    )(() async => await remoteDataSource.getPrivateServices());
-
-    result.fold((_) {}, (data) => _privateServicesCache = data);
-    return result;
+  Future<Either<Failure, List<PrivateServiceModel>>> getPrivateServices(
+    GetPrivateServicesUseCaseParams params,
+  ) async {
+    return await RepoImplCallHandler<List<PrivateServiceModel>>(networkInfo)(
+      () async => await remoteDataSource.getPrivateServices(params),
+    );
   }
 }

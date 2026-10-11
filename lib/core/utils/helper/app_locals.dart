@@ -2,13 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../network/local/cache/cache_helper.dart';
+import '../../network/local/cache/cache_keys.dart';
 import '../../routing/app_navigator.dart';
 
 class AppLocales {
   static int? currentLang;
 
   static Future<void> init() async {
-    final cachedLang = CacheHelper.get('lang') as String?;
+    final cachedLang = CacheHelper.get(CacheKeys.lang) as String?;
     final index = cachedLang != null
         ? supportedLocalesCodes.indexOf(cachedLang)
         : -1;
@@ -17,7 +18,7 @@ class AppLocales {
     currentLocale = supportedLocales[currentLang!];
 
     if (index < 0) {
-      await CacheHelper.save('lang', supportedLocalesCodes[currentLang!]);
+      await CacheHelper.save(CacheKeys.lang, supportedLocalesCodes[currentLang!]);
     }
   }
 
@@ -28,9 +29,9 @@ class AppLocales {
     'app.language_english'.tr(),
   ];
 
-  static const supportedLocalesCodes = ['ar', 'en'];
+  static const supportedLocalesCodes = [CacheKeys.langAr, CacheKeys.langEN];
 
-  static Locale currentLocale = supportedLocales[currentLang!];
+  static Locale currentLocale = supportedLocales.first;
 
   static String get acceptLanguageHeader {
     final code = currentLocale.languageCode;
@@ -42,13 +43,13 @@ class AppLocales {
   static Future<void> setDeviceLocale(int index) async {
     if (index < 0 || index >= supportedLocales.length) return;
 
-    await CacheHelper.save('lang', supportedLocalesCodes[index]);
+    final easyLocalization = EasyLocalization.of(AppNavigator.context)!;
+
+    await CacheHelper.save(CacheKeys.lang, supportedLocalesCodes[index]);
 
     currentLang = index;
     currentLocale = supportedLocales[index];
 
-    await EasyLocalization.of(
-      AppNavigator.context,
-    )!.setLocale(supportedLocales[index]);
+    await easyLocalization.setLocale(supportedLocales[index]);
   }
 }

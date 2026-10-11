@@ -8,6 +8,7 @@ import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/app_dimensions.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
 import 'package:isnad_worker/core/utils/validators/app_validators.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 
 class DropdownItem<T> {
   final T id;
@@ -187,18 +188,16 @@ class _FieldContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AppContainer(
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
-      decoration: BoxDecoration(
-        color: inputBg,
-        borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(
-          color: hasError
-              ? AppColors.errorBorder
-              : AppColors.grey100.withOpacity(0.4),
-          width: hasError ? 1.5 : 1,
-        ),
+      color: inputBg,
+      borderRadius: BorderRadius.circular(8.r),
+      border: Border.all(
+        color: hasError
+            ? AppColors.errorBorder
+            : AppColors.grey100.withOpacity(0.4),
+        width: hasError ? 1.5 : 1,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

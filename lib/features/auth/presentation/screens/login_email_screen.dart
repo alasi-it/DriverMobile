@@ -16,7 +16,7 @@ import 'package:isnad_worker/features/auth/presentation/manager/auth_cubit.dart'
 import 'package:isnad_worker/features/auth/presentation/screens/login_phone_screen.dart';
 import 'package:isnad_worker/features/auth/presentation/widgets/auth_header_widget.dart';
 import 'package:isnad_worker/features/auth/presentation/widgets/auth_log_widget.dart';
-import 'package:isnad_worker/features/home/presentation/screens/home_screen.dart';
+import 'package:isnad_worker/features/home/presentation/screens/main_home_screen.dart';
 
 class LoginEmailScreen extends StatefulWidget {
   const LoginEmailScreen({super.key});
@@ -27,7 +27,7 @@ class LoginEmailScreen extends StatefulWidget {
 
 class _LoginEmailScreenState extends State<LoginEmailScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _emailOrUsernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -46,7 +46,7 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _emailOrUsernameController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -54,11 +54,11 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
   void _submit() {
     FocusScope.of(context).unfocus();
     if (_formKey.currentState?.validate() ?? false) {
-      AppNavigator.push(const HomeScreen());
+      AppNavigator.push(const MainHomeScreen());
       // context.read<AuthCubit>().login(
       //   deviceId: '',
       //   password: _passwordController.text,
-      //   phoneNumber: _emailController.text,
+      //   phoneNumber: _emailOrUsernameController.text,
       // );
     }
   }
@@ -104,12 +104,13 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
 
                           24.verticalSpace,
                           CustomFieldText(
-                            controller: _emailController,
+                            controller: _emailOrUsernameController,
                             title: "auth.login.email.title".tr(),
                             hintText: "auth.login.email.title".tr(),
-                            keyboardType: TextInputType.emailAddress,
+                            keyboardType: TextInputType.text,
                             showRequiredIndicator: true,
-                            validator: (value) => AppValidators.email(value),
+                            validator: (value) =>
+                                AppValidators.emailOrUsername(value),
                           ),
 
                           24.verticalSpace,

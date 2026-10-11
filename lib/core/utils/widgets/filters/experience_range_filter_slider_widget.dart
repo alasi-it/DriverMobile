@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
@@ -63,19 +64,15 @@ class _ExperienceRangeFilterSliderState
             enableTooltip: true,
             stepSize: 1,
             inactiveColor: AppColors.primary50,
-            endThumbIcon: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.primary50,
-                border: Border.all(color: AppColors.primary, width: 2.w),
-              ),
+            endThumbIcon: AppContainer(
+              shape: BoxShape.circle,
+              color: AppColors.primary50,
+              border: Border.all(color: AppColors.primary, width: 2.w),
             ),
-            startThumbIcon: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.primary50,
-                border: Border.all(color: AppColors.primary, width: 2.w),
-              ),
+            startThumbIcon: AppContainer(
+              shape: BoxShape.circle,
+              color: AppColors.primary50,
+              border: Border.all(color: AppColors.primary, width: 2.w),
             ),
             labelFormatterCallback: (actualValue, formattedText) {
               return '${actualValue.round()} ${'filter.year'.tr()}';

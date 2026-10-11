@@ -17,7 +17,7 @@ import 'package:isnad_worker/features/auth/presentation/manager/auth_cubit.dart'
 import 'package:isnad_worker/features/auth/presentation/screens/login_email_screen.dart';
 import 'package:isnad_worker/features/auth/presentation/widgets/auth_header_widget.dart';
 import 'package:isnad_worker/features/auth/presentation/widgets/auth_log_widget.dart';
-import 'package:isnad_worker/features/home/presentation/screens/home_screen.dart';
+import 'package:isnad_worker/features/home/presentation/screens/main_home_screen.dart';
 
 class LoginPhoneScreen extends StatefulWidget {
   const LoginPhoneScreen({super.key});
@@ -57,7 +57,7 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
   void _submit() {
     FocusScope.of(context).unfocus();
     if (_formKey.currentState?.validate() ?? false) {
-      AppNavigator.push(const HomeScreen());
+      AppNavigator.push(const MainHomeScreen());
 
       // context.read<AuthCubit>().login(
       //   deviceId: _phoneController.text,

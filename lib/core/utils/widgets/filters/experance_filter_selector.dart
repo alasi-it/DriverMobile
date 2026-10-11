@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 
 class RadioFilterWidget extends StatefulWidget {
   const RadioFilterWidget({
@@ -65,33 +66,29 @@ class _RadioFilterWidgetState extends State<RadioFilterWidget> {
                   _selectedIndex == null ? null : _values[_selectedIndex!],
                 );
               },
-              child: Container(
+              child: AppContainer(
                 padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-                decoration: BoxDecoration(
-                  color: isSelected ? AppColors.primary50 : Colors.transparent,
-                  borderRadius: BorderRadius.circular(12.r),
-                  border: Border.all(
-                    color: isSelected ? AppColors.primary : AppColors.grey300,
-                    width: 1.5.w,
-                  ),
+                color: isSelected ? AppColors.primary50 : Colors.transparent,
+                borderRadius: BorderRadius.circular(12.r),
+                border: Border.all(
+                  color: isSelected ? AppColors.primary : AppColors.grey300,
+                  width: 1.5.w,
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
+                    AppContainer(
                       width: 18.w,
                       height: 18.w,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
+                      shape: BoxShape.circle,
+                      color: isSelected
+                          ? AppColors.primary
+                          : Colors.transparent,
+                      border: Border.all(
                         color: isSelected
                             ? AppColors.primary
-                            : Colors.transparent,
-                        border: Border.all(
-                          color: isSelected
-                              ? AppColors.primary
-                              : AppColors.grey300,
-                          width: 1.5.w,
-                        ),
+                            : AppColors.grey300,
+                        width: 1.5.w,
                       ),
                     ),
                     SizedBox(width: 8.w),

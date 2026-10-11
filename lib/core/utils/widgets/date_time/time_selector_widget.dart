@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 
 class PickupTimeWidget extends StatelessWidget {
   const PickupTimeWidget({super.key, this.title});
@@ -67,15 +68,14 @@ class _TimeSelectorState extends State<_TimeSelector> {
                 selectedIndex = index;
               });
             },
-            child: Container(
+            child: AppContainer(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: isSelected ? AppColors.primary50 : AppColors.white,
-                borderRadius: BorderRadius.circular(12.r),
-                border: Border.all(
-                  color: isSelected ? AppColors.primary : AppColors.grey200,
-                  width: 1.5.w,
-                ),
+              padding: EdgeInsets.zero,
+              color: isSelected ? AppColors.primary50 : AppColors.white,
+              borderRadius: BorderRadius.circular(12.r),
+              border: Border.all(
+                color: isSelected ? AppColors.primary : AppColors.grey200,
+                width: 1.5.w,
               ),
               child: Text(
                 _timeKeys[index].tr(),

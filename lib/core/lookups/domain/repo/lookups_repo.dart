@@ -6,15 +6,30 @@ import 'package:isnad_worker/core/lookups/data/models/language_model.dart';
 import 'package:isnad_worker/core/lookups/data/models/private_service_model.dart';
 import 'package:isnad_worker/core/lookups/data/models/skill_model.dart';
 import 'package:isnad_worker/core/lookups/domain/use_case/get_cities_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_countries_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_job_titles_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_languages_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_private_services_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_skills_use_case.dart';
 import 'package:isnad_worker/core/network/errors/failure.dart';
 
 abstract class LookupsRepo {
-  Future<Either<Failure, List<CountryModel>>> getCountries();
+  Future<Either<Failure, List<CountryModel>>> getCountries(
+    GetCountriesUseCaseParams params,
+  );
   Future<Either<Failure, List<CityModel>>> getCities(
     GetCitiesUseCaseParams params,
   );
-  Future<Either<Failure, List<JobModel>>> getJobTitles();
-  Future<Either<Failure, List<SkillModel>>> getSkills();
-  Future<Either<Failure, List<LanguageModel>>> getLanguages();
-  Future<Either<Failure, List<PrivateServiceModel>>> getPrivateServices();
+  Future<Either<Failure, List<JobModel>>> getJobTitles(
+    GetJobTitlesUseCaseParams params,
+  );
+  Future<Either<Failure, List<SkillModel>>> getSkills(
+    GetSkillsUseCaseParams params,
+  );
+  Future<Either<Failure, List<LanguageModel>>> getLanguages(
+    GetLanguagesUseCaseParams params,
+  );
+  Future<Either<Failure, List<PrivateServiceModel>>> getPrivateServices(
+    GetPrivateServicesUseCaseParams params,
+  );
 }

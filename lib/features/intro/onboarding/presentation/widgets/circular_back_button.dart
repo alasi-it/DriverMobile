@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 
 class CircularBackButton extends StatefulWidget {
   final VoidCallback? onPressed;
@@ -70,11 +71,10 @@ class _CircularBackButtonState extends State<CircularBackButton> {
                 shape: BoxShape.circle,
                 color: Colors.transparent,
               ),
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.primary,
-                ),
+              child: AppContainer(
+                padding: EdgeInsets.zero,
+                shape: BoxShape.circle,
+                color: AppColors.primary,
                 child: Center(
                   child: SizedBox(
                     width: 16.w,

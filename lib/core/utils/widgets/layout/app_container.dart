@@ -3,20 +3,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_dimensions.dart';
 
 class AppContainer extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final Color? color;
   final List<BoxShadow>? boxShadow;
-  final BorderRadius? borderRadius;
+  final BorderRadiusGeometry? borderRadius;
   final BoxBorder? border;
   final BoxShape shape;
   final double? width;
   final double? height;
+  final AlignmentGeometry? alignment;
+  final BoxConstraints? constraints;
 
   const AppContainer({
     super.key,
-    required this.child,
+    this.child,
     this.padding,
     this.margin,
     this.color,
@@ -26,6 +28,8 @@ class AppContainer extends StatelessWidget {
     this.shape = BoxShape.rectangle,
     this.width,
     this.height,
+    this.alignment,
+    this.constraints,
   });
 
   @override
@@ -33,6 +37,8 @@ class AppContainer extends StatelessWidget {
     return Container(
       width: width,
       height: height,
+      alignment: alignment,
+      constraints: constraints,
       padding: padding ?? EdgeInsets.all(12.w),
       margin: margin,
 

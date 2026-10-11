@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 
 class SingleChoiceFilterWidget extends StatefulWidget {
   const SingleChoiceFilterWidget({
@@ -78,18 +79,16 @@ class _SingleChoiceFilterWidgetState extends State<SingleChoiceFilterWidget> {
 
                 widget.onChanged(_selected);
               },
-              child: Container(
+              child: AppContainer(
                 padding: EdgeInsets.symmetric(
                   horizontal: isSelected ? 12.w : 8.w,
                   vertical: 4.h,
                 ),
-                decoration: BoxDecoration(
-                  color: isSelected ? AppColors.primary50 : Colors.transparent,
-                  borderRadius: BorderRadius.circular(12.r),
-                  border: Border.all(
-                    color: isSelected ? AppColors.primary : AppColors.grey300,
-                    width: 1.5.w,
-                  ),
+                color: isSelected ? AppColors.primary50 : Colors.transparent,
+                borderRadius: BorderRadius.circular(12.r),
+                border: Border.all(
+                  color: isSelected ? AppColors.primary : AppColors.grey300,
+                  width: 1.5.w,
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,

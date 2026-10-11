@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 import 'package:lottie/lottie.dart';
 
 const String _kFont = 'cairo';
@@ -140,14 +141,13 @@ class _ErrorScreenState extends State<ErrorScreen>
     ),
   );
 
-  Widget _fallbackIcon() => Container(
+  Widget _fallbackIcon() => AppContainer(
     width: 120,
     height: 120,
-    decoration: BoxDecoration(
-      shape: BoxShape.circle,
-      color: AppColors.primary.withOpacity(0.12),
-      border: Border.all(color: AppColors.primary, width: 2.5),
-    ),
+    shape: BoxShape.circle,
+    color: AppColors.primary.withOpacity(0.12),
+    border: Border.all(color: AppColors.primary, width: 2.5),
+    padding: EdgeInsets.zero,
     child: Icon(
       Icons.warning_amber_rounded,
       color: AppColors.primaryLight,
@@ -171,22 +171,18 @@ class _ErrorScreenState extends State<ErrorScreen>
       Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
+          AppContainer(
             width: 32,
             height: 3,
-            decoration: BoxDecoration(
-              color: AppColors.primary,
-              borderRadius: BorderRadius.circular(2),
-            ),
+            color: AppColors.primary,
+            borderRadius: BorderRadius.circular(2),
           ),
           const SizedBox(width: 4),
-          Container(
+          AppContainer(
             width: 16,
             height: 3,
-            decoration: BoxDecoration(
-              color: AppColors.secondary,
-              borderRadius: BorderRadius.circular(2),
-            ),
+            color: AppColors.secondary,
+            borderRadius: BorderRadius.circular(2),
           ),
         ],
       ),
@@ -203,33 +199,29 @@ class _ErrorScreenState extends State<ErrorScreen>
     ),
   );
 
-  Widget _buildErrorCard() => Container(
+  Widget _buildErrorCard() => AppContainer(
     width: double.infinity,
     padding: const EdgeInsets.all(18),
-    decoration: BoxDecoration(
-      color: _cardBg,
-      borderRadius: BorderRadius.circular(16),
-      border: Border.all(color: AppColors.primary.withOpacity(0.3)),
-      boxShadow: [
-        BoxShadow(
-          color: AppColors.primary.withOpacity(0.07),
-          blurRadius: 20,
-          offset: const Offset(0, 6),
-        ),
-      ],
-    ),
+    color: _cardBg,
+    borderRadius: BorderRadius.circular(16),
+    border: Border.all(color: AppColors.primary.withOpacity(0.3)),
+    boxShadow: [
+      BoxShadow(
+        color: AppColors.primary.withOpacity(0.07),
+        blurRadius: 20,
+        offset: const Offset(0, 6),
+      ),
+    ],
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            Container(
+            AppContainer(
               width: 8,
               height: 8,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.primaryLight,
-              ),
+              shape: BoxShape.circle,
+              color: AppColors.primaryLight,
             ),
             const SizedBox(width: 8),
             Text(
@@ -259,13 +251,11 @@ class _ErrorScreenState extends State<ErrorScreen>
 
   Widget _buildStackToggle() => GestureDetector(
     onTap: () => setState(() => _showStack = !_showStack),
-    child: Container(
+    child: AppContainer(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      decoration: BoxDecoration(
-        color: AppColors.secondary.withOpacity(0.08),
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppColors.secondary.withOpacity(0.25)),
-      ),
+      color: AppColors.secondary.withOpacity(0.08),
+      borderRadius: BorderRadius.circular(10),
+      border: Border.all(color: AppColors.secondary.withOpacity(0.25)),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -289,15 +279,13 @@ class _ErrorScreenState extends State<ErrorScreen>
     ),
   );
 
-  Widget _buildStackCard() => Container(
+  Widget _buildStackCard() => AppContainer(
     width: double.infinity,
     constraints: const BoxConstraints(maxHeight: 200),
     padding: const EdgeInsets.all(14),
-    decoration: BoxDecoration(
-      color: AppColors.tertiary.withOpacity(AppColors.isDark() ? 0.6 : 0.05),
-      borderRadius: BorderRadius.circular(12),
-      border: Border.all(color: _divider),
-    ),
+    color: AppColors.tertiary.withOpacity(AppColors.isDark() ? 0.6 : 0.05),
+    borderRadius: BorderRadius.circular(12),
+    border: Border.all(color: _divider),
     child: SingleChildScrollView(
       child: Text(
         widget.stackTrace?.toString() ?? 'error_screen.no_stack'.tr(),
@@ -310,12 +298,11 @@ class _ErrorScreenState extends State<ErrorScreen>
     ),
   );
 
-  Widget _buildActions() => Container(
+  Widget _buildActions() => AppContainer(
     padding: const EdgeInsets.fromLTRB(24, 14, 24, 28),
-    decoration: BoxDecoration(
-      color: _bg,
-      border: Border(top: BorderSide(color: _divider)),
-    ),
+    color: _bg,
+    border: Border(top: BorderSide(color: _divider)),
+    borderRadius: BorderRadius.zero,
     child: Column(
       children: [
         GestureDetector(
@@ -419,36 +406,33 @@ class AppInlineErrorWidget extends StatelessWidget {
       textDirection: isRtl ? ui.TextDirection.rtl : ui.TextDirection.ltr,
       child: Material(
         color: Colors.transparent,
-        child: Container(
+        child: AppContainer(
           width: double.infinity,
           margin: const EdgeInsets.all(8),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-          decoration: BoxDecoration(
-            color: AppColors.backgroundSecondary,
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(color: AppColors.primary.withOpacity(0.35)),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.primary.withOpacity(0.1),
-                blurRadius: 12,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
+          color: AppColors.backgroundSecondary,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: AppColors.primary.withOpacity(0.35)),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.primary.withOpacity(0.1),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+          ],
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
+              AppContainer(
                 width: 40,
                 height: 40,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.primary.withOpacity(0.12),
-                  border: Border.all(
-                    color: AppColors.primary.withOpacity(0.4),
-                    width: 1.5,
-                  ),
+                shape: BoxShape.circle,
+                color: AppColors.primary.withOpacity(0.12),
+                border: Border.all(
+                  color: AppColors.primary.withOpacity(0.4),
+                  width: 1.5,
                 ),
+                padding: EdgeInsets.zero,
                 child: Icon(
                   Icons.warning_amber_rounded,
                   color: AppColors.primaryLight,
@@ -466,13 +450,11 @@ class AppInlineErrorWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
+              AppContainer(
                 width: 6,
                 height: 6,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.errorColor,
-                ),
+                shape: BoxShape.circle,
+                color: AppColors.errorColor,
               ),
             ],
           ),

@@ -159,14 +159,27 @@ class CustomFieldText extends StatelessWidget {
             filled: true,
             suffixIconConstraints: AppDimensions.boxConstraints(),
             prefixIconConstraints: AppDimensions.boxConstraints(),
-            border: AppDimensions.border(color: borderColor),
-            enabledBorder: AppDimensions.enabledBorder(color: borderColor),
-            focusedBorder: AppDimensions.focusedBorder(color: borderColor),
-            disabledBorder: AppDimensions.disabledBorder(color: borderColor),
-            errorBorder: AppDimensions.errorBorder(),
+            border: AppDimensions.border(
+              color: borderColor,
+              radius: borderRadius,
+            ),
+            enabledBorder: AppDimensions.enabledBorder(
+              color: borderColor,
+              radius: borderRadius,
+            ),
+            focusedBorder: AppDimensions.focusedBorder(
+              color: borderColor,
+              radius: borderRadius,
+            ),
+            disabledBorder: AppDimensions.disabledBorder(
+              color: borderColor,
+              radius: borderRadius,
+            ),
+            errorBorder: AppDimensions.errorBorder(radius: borderRadius),
 
             focusedErrorBorder: AppDimensions.focusedErrorBorder(
               color: borderColor,
+              radius: borderRadius,
             ),
             contentPadding:
                 padding ??

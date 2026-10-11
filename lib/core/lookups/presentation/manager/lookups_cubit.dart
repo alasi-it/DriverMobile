@@ -1,5 +1,3 @@
-import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:isnad_worker/core/lookups/data/models/city_model.dart';
 import 'package:isnad_worker/core/lookups/data/models/country_model.dart';
 import 'package:isnad_worker/core/lookups/data/models/job_model.dart';
@@ -12,139 +10,257 @@ import 'package:isnad_worker/core/lookups/domain/use_case/get_job_titles_use_cas
 import 'package:isnad_worker/core/lookups/domain/use_case/get_languages_use_case.dart';
 import 'package:isnad_worker/core/lookups/domain/use_case/get_private_services_use_case.dart';
 import 'package:isnad_worker/core/lookups/domain/use_case/get_skills_use_case.dart';
-import 'package:isnad_worker/core/usecase/usecase.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/lookup_query_params.dart';
 import 'package:isnad_worker/core/utils/service_locator/service_locator.dart';
-import 'package:meta/meta.dart';
 
-part 'lookups_state.dart';
+class _LookupPage<T> {
+  final List<T> items = [];
+  bool hasMore = true;
+  bool isLoading = false;
+}
 
-class LookupsCubit extends Cubit<LookupsState> {
-  LookupsCubit() : super(LookupsInitial());
+class LookupsCubit {
+  final Map<String, _LookupPage<CountryModel>> _countriesPages = {};
+  final Map<String, _LookupPage<CityModel>> _citiesPages = {};
+  final Map<String, _LookupPage<JobModel>> _jobsPages = {};
+  final Map<String, _LookupPage<SkillModel>> _skillsPages = {};
+  final Map<String, _LookupPage<LanguageModel>> _languagesPages = {};
+  final Map<String, _LookupPage<PrivateServiceModel>> _privateServicesPages =
+      {};
 
-  List<CountryModel> countries = [];
-  List<JobModel> jobs = [];
-  List<CityModel> cities = [];
-  List<SkillModel> skills = [];
-  List<LanguageModel> languages = [];
-  List<PrivateServiceModel> privateServices = [];
-  String? _cachedCountryId;
-
-  Future<void> loadAll({bool forceRefresh = false}) async {
-    await Future.wait([
-      getCountries(forceRefresh: forceRefresh),
-      getJobs(forceRefresh: forceRefresh),
-      getCities(forceRefresh: forceRefresh),
-      getSkills(forceRefresh: forceRefresh),
-      getLanguages(forceRefresh: forceRefresh),
-      getPrivateServices(forceRefresh: forceRefresh),
-    ]);
+  void clearAll() {
+    _countriesPages.clear();
+    _citiesPages.clear();
+    _jobsPages.clear();
+    _skillsPages.clear();
+    _languagesPages.clear();
+    _privateServicesPages.clear();
   }
 
-  Future<void> getCountries({bool forceRefresh = false}) async {
-    if (countries.isNotEmpty && !forceRefresh) {
-      emit(GetCountriesSuccessState(countries));
-      return;
+  Future<List<T>> _loadPaginated<T>({
+    required Map<String, _LookupPage<T>> pages,
+    required String key,
+    required bool loadMore,
+    required bool forceRefresh,
+    required int pageSize,
+    required Future<List<T>> Function(int skipCount) fetch,
+  }) async {
+    final page = forceRefresh
+        ? (pages[key] = _LookupPage<T>())
+        : pages.putIfAbsent(key, () => _LookupPage<T>());
+
+    if (page.isLoading) return List<T>.from(page.items);
+    if (!loadMore && page.items.isNotEmpty) return List<T>.from(page.items);
+    if (loadMore && !page.hasMore) return List<T>.from(page.items);
+
+    page.isLoading = true;
+    try {
+      final result = await fetch(page.items.length);
+      page.items.addAll(result);
+      page.hasMore = result.length >= pageSize;
+      return List<T>.from(page.items);
+    } finally {
+      page.isLoading = false;
     }
-
-    emit(GetCountriesLoadingState());
-    final result = await sl<GetCountriesUseCase>()(NoParams());
-
-    result.fold((error) => emit(GetCountriesFailureState(error.errMessage)), (
-      model,
-    ) {
-      countries = model;
-      emit(GetCountriesSuccessState(model));
-    });
   }
 
-  Future<void> getJobs({bool forceRefresh = false}) async {
-    if (jobs.isNotEmpty && !forceRefresh) {
-      emit(GetJobsSuccessState(jobs));
-      return;
-    }
+  bool hasMoreCountries({String filterText = ''}) =>
+      _countriesPages[filterText]?.hasMore ?? true;
 
-    emit(GetJobsLoadingState());
-    final result = await sl<GetJobTitlesUseCase>()(NoParams());
+  bool hasMoreJobTitles({String filterText = ''}) =>
+      _jobsPages[filterText]?.hasMore ?? true;
 
-    result.fold((error) => emit(GetJobsFailureState(error.errMessage)), (
-      model,
-    ) {
-      jobs = model;
-      emit(GetJobsSuccessState(model));
-    });
-  }
+  bool hasMoreSkills({String filterText = ''}) =>
+      _skillsPages[filterText]?.hasMore ?? true;
 
-  Future<void> getSkills({bool forceRefresh = false}) async {
-    if (skills.isNotEmpty && !forceRefresh) {
-      emit(GetSkillsSuccessState(skills));
-      return;
-    }
+  bool hasMoreLanguages({String filterText = ''}) =>
+      _languagesPages[filterText]?.hasMore ?? true;
 
-    emit(GetSkillsLoadingState());
-    final result = await sl<GetSkillsUseCase>()(NoParams());
+  bool hasMorePrivateServices({String filterText = ''}) =>
+      _privateServicesPages[filterText]?.hasMore ?? true;
 
-    result.fold((error) => emit(GetSkillsFailureState(error.errMessage)), (
-      model,
-    ) {
-      skills = model;
-      emit(GetSkillsSuccessState(model));
-    });
-  }
+  bool hasMoreCitiesFor(String? countryId, {String filterText = ''}) =>
+      _citiesPages['${countryId ?? ''}|$filterText']?.hasMore ?? true;
 
-  Future<void> getLanguages({bool forceRefresh = false}) async {
-    if (languages.isNotEmpty && !forceRefresh) {
-      emit(GetLanguagesSuccessState(languages));
-      return;
-    }
-
-    emit(GetLanguagesLoadingState());
-    final result = await sl<GetLanguagesUseCase>()(NoParams());
-
-    result.fold((error) => emit(GetLanguagesFailureState(error.errMessage)), (
-      model,
-    ) {
-      languages = model;
-      emit(GetLanguagesSuccessState(model));
-    });
-  }
-
-  Future<void> getPrivateServices({bool forceRefresh = false}) async {
-    if (privateServices.isNotEmpty && !forceRefresh) {
-      emit(GetPrivateServicesSuccessState(privateServices));
-      return;
-    }
-
-    emit(GetPrivateServicesLoadingState());
-    final result = await sl<GetPrivateServicesUseCase>()(NoParams());
-
-    result.fold(
-      (error) => emit(GetPrivateServicesFailureState(error.errMessage)),
-      (model) {
-        privateServices = model;
-        emit(GetPrivateServicesSuccessState(model));
+  Future<List<CountryModel>> searchCountries({
+    required String filterText,
+    required int skipCount,
+    int maxResultCount = 20,
+    bool forceRefresh = false,
+  }) {
+    return _loadPaginated<CountryModel>(
+      pages: _countriesPages,
+      key: filterText,
+      loadMore: skipCount > 0,
+      forceRefresh: forceRefresh,
+      pageSize: maxResultCount,
+      fetch: (skip) async {
+        final result = await sl<GetCountriesUseCase>()(
+          GetCountriesUseCaseParams(
+            query: LookupQueryParams(
+              filterText: filterText,
+              skipCount: skip,
+              maxResultCount: maxResultCount,
+            ),
+          ),
+        );
+        return result.fold(
+          (error) => throw Exception(error.errMessage),
+          (data) => data,
+        );
       },
     );
   }
 
-  bool hasCitiesFor(String? countryId) =>
-      cities.isNotEmpty && _cachedCountryId == countryId;
-
-  Future<void> getCities({String? countryId, bool forceRefresh = false}) async {
-    if (cities.isNotEmpty && !forceRefresh && _cachedCountryId == countryId) {
-      emit(GetCitiesSuccessState(cities));
-      return;
-    }
-    emit(GetCitiesLoadingState());
-    final result = await sl<GetCitiesUseCase>()(
-      GetCitiesUseCaseParams(countryId: countryId),
+  Future<List<CityModel>> searchCities({
+    required String? countryId,
+    required String filterText,
+    required int skipCount,
+    int maxResultCount = 20,
+    bool forceRefresh = false,
+  }) {
+    return _loadPaginated<CityModel>(
+      pages: _citiesPages,
+      key: '${countryId ?? ''}|$filterText',
+      loadMore: skipCount > 0,
+      forceRefresh: forceRefresh,
+      pageSize: maxResultCount,
+      fetch: (skip) async {
+        final result = await sl<GetCitiesUseCase>()(
+          GetCitiesUseCaseParams(
+            countryId: countryId,
+            query: LookupQueryParams(
+              filterText: filterText,
+              skipCount: skip,
+              maxResultCount: maxResultCount,
+            ),
+          ),
+        );
+        return result.fold(
+          (error) => throw Exception(error.errMessage),
+          (data) => data,
+        );
+      },
     );
+  }
 
-    result.fold((error) => emit(GetCitiesFailureState(error.errMessage)), (
-      model,
-    ) {
-      cities = model;
-      _cachedCountryId = countryId;
-      emit(GetCitiesSuccessState(model));
-    });
+  Future<List<JobModel>> searchJobTitles({
+    required String filterText,
+    required int skipCount,
+    int maxResultCount = 20,
+    bool forceRefresh = false,
+  }) {
+    return _loadPaginated<JobModel>(
+      pages: _jobsPages,
+      key: filterText,
+      loadMore: skipCount > 0,
+      forceRefresh: forceRefresh,
+      pageSize: maxResultCount,
+      fetch: (skip) async {
+        final result = await sl<GetJobTitlesUseCase>()(
+          GetJobTitlesUseCaseParams(
+            query: LookupQueryParams(
+              filterText: filterText,
+              skipCount: skip,
+              maxResultCount: maxResultCount,
+            ),
+          ),
+        );
+        return result.fold(
+          (error) => throw Exception(error.errMessage),
+          (data) => data,
+        );
+      },
+    );
+  }
+
+  Future<List<SkillModel>> searchSkills({
+    required String filterText,
+    required int skipCount,
+    int maxResultCount = 20,
+    bool forceRefresh = false,
+  }) {
+    return _loadPaginated<SkillModel>(
+      pages: _skillsPages,
+      key: filterText,
+      loadMore: skipCount > 0,
+      forceRefresh: forceRefresh,
+      pageSize: maxResultCount,
+      fetch: (skip) async {
+        final result = await sl<GetSkillsUseCase>()(
+          GetSkillsUseCaseParams(
+            query: LookupQueryParams(
+              filterText: filterText,
+              skipCount: skip,
+              maxResultCount: maxResultCount,
+            ),
+          ),
+        );
+        return result.fold(
+          (error) => throw Exception(error.errMessage),
+          (data) => data,
+        );
+      },
+    );
+  }
+
+  Future<List<LanguageModel>> searchLanguages({
+    required String filterText,
+    required int skipCount,
+    int maxResultCount = 20,
+    bool forceRefresh = false,
+  }) {
+    return _loadPaginated<LanguageModel>(
+      pages: _languagesPages,
+      key: filterText,
+      loadMore: skipCount > 0,
+      forceRefresh: forceRefresh,
+      pageSize: maxResultCount,
+      fetch: (skip) async {
+        final result = await sl<GetLanguagesUseCase>()(
+          GetLanguagesUseCaseParams(
+            query: LookupQueryParams(
+              filterText: filterText,
+              skipCount: skip,
+              maxResultCount: maxResultCount,
+            ),
+          ),
+        );
+        return result.fold(
+          (error) => throw Exception(error.errMessage),
+          (data) => data,
+        );
+      },
+    );
+  }
+
+  Future<List<PrivateServiceModel>> searchPrivateServices({
+    required String filterText,
+    required int skipCount,
+    int maxResultCount = 20,
+    bool forceRefresh = false,
+  }) {
+    return _loadPaginated<PrivateServiceModel>(
+      pages: _privateServicesPages,
+      key: filterText,
+      loadMore: skipCount > 0,
+      forceRefresh: forceRefresh,
+      pageSize: maxResultCount,
+      fetch: (skip) async {
+        final result = await sl<GetPrivateServicesUseCase>()(
+          GetPrivateServicesUseCaseParams(
+            query: LookupQueryParams(
+              filterText: filterText,
+              skipCount: skip,
+              maxResultCount: maxResultCount,
+            ),
+          ),
+        );
+        return result.fold(
+          (error) => throw Exception(error.errMessage),
+          (data) => data,
+        );
+      },
+    );
   }
 }

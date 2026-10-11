@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 
 class CustomDivider extends StatelessWidget {
   const CustomDivider({
@@ -30,12 +31,10 @@ class CustomDivider extends StatelessWidget {
             ),
           ),
           SizedBox(width: 12.w),
-          Container(
+          AppContainer(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
-            decoration: BoxDecoration(
-              color: (color ?? AppColors.primary700).withOpacity(0.1),
-              borderRadius: BorderRadius.circular(20.r),
-            ),
+            color: (color ?? AppColors.primary700).withOpacity(0.1),
+            borderRadius: BorderRadius.circular(20.r),
             child: Text(
               text!,
               style: AppTextStyles.font13Medium.copyWith(

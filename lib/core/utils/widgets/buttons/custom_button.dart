@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
 import 'package:isnad_worker/core/utils/widgets/icons/custom_icon.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 
 class CustomButton extends StatefulWidget {
   const CustomButton({
@@ -59,23 +60,22 @@ class _CustomButtonState extends State<CustomButton> {
       onHighlightChanged: widget.enablePressColor
           ? (isPressed) => setState(() => _isPressed = isPressed)
           : null,
-      child: Container(
+      child: AppContainer(
+        boxShadow: [],
         width: widget.width ?? double.infinity,
 
         padding:
             widget.padding ??
             EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
-        decoration: BoxDecoration(
-          borderRadius: widget.borderRadius ?? BorderRadius.circular(8.h),
-          color: widget.loading
-              ? AppColors.inputPlaceholder
-              : _isPressed && widget.enablePressColor
-              ? AppColors.secondary
-              : widget.bgColor ?? AppColors.buttonPrimary,
-          border: widget.borderColor != null && !widget.loading
-              ? Border.all(color: widget.borderColor!, width: 1.w)
-              : null,
-        ),
+        borderRadius: widget.borderRadius ?? BorderRadius.circular(8.h),
+        color: widget.loading
+            ? AppColors.inputPlaceholder
+            : _isPressed && widget.enablePressColor
+            ? AppColors.secondary
+            : widget.bgColor ?? AppColors.buttonPrimary,
+        border: widget.borderColor != null && !widget.loading
+            ? Border.all(color: widget.borderColor!, width: 1.w)
+            : null,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

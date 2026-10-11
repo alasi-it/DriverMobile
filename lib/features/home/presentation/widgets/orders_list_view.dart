@@ -22,12 +22,18 @@ class OrdersListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      padding: padding ?? EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      padding:
+          padding ?? EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       physics: physics,
       shrinkWrap: shrinkWrap,
       itemCount: orders.length,
-      separatorBuilder: (_, _) => SizedBox(height: 14.h),
-      itemBuilder: (context, index) => OrderCardWidget(order: orders[index]),
+      separatorBuilder: (_, _) => SizedBox(height: 16.h),
+      itemBuilder: (context, index) => Padding(
+        padding: EdgeInsets.only(
+          bottom: index == orders.length - 1 ? 120.h : 0,
+        ),
+        child: OrderCardWidget(order: orders[index]),
+      ),
     );
   }
 }

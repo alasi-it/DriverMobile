@@ -29,7 +29,7 @@ class AppColors {
   static const Color typographyHeadingLight = Color(0xFF2D2D2D);
   static const Color typographyHeadingDark = Color(0xFFFFFFFF);
   static const Color typographySubtitleLight = Color(0xFF696969);
-  static const Color typographySubtitleDark = Color(0xFFFFFFFF);
+  static const Color typographySubtitleDark = Color(0xFFB0B5BC);
   static const Color typographyBodyLight = Color(0xFF30303D);
   static const Color typographyBodyDark = Color(0xFFFFFFFF);
 
@@ -42,8 +42,8 @@ class AppColors {
   static const Color inputPlaceholderDark = Color(0xFFB3BAC6);
 
   // Buttons
-  static final Color buttonPrimaryLight = primaryLight;
-  static final Color buttonPrimaryDark = primaryDark;
+  static Color get buttonPrimaryLight => primaryLight;
+  static Color get buttonPrimaryDark => primaryDark;
   static const Color buttonLabelLight = white;
   static const Color buttonLabelDark = white;
   static const Color buttonDisabled = Color(0xFFCCCCCC);
@@ -52,10 +52,18 @@ class AppColors {
   static const Color iconPrimaryLight = typographyHeadingLight;
   static const Color iconPrimaryDark = typographyHeadingDark;
   static const Color iconSuccess = Color(0xFF27AE60);
+  static const Color iconChipBackgroundLight = Color(0xFFEAF6F6);
+  static const Color iconChipBackgroundDark = Color(0xFF1D2226);
+  static const Color circleIconBackgroundLight = Color(0xFFD7EFF0);
 
   //card
   static const Color cardBackgroundLight = white;
   static const Color cardBackgroundDark = Color(0xFF1D2226);
+
+  // Neutral (dividers / borders / unselected surfaces)
+  static const Color dividerDark = Color(0xFF33383D);
+  static const Color borderDark = Color(0xFF3A3F45);
+  static const Color neutralSurfaceDark = Color(0xFF2A2F34);
 
   // primary:
   static Color primary50 = Color(0xFFECFBFC);
@@ -93,6 +101,7 @@ class AppColors {
   static const Color grey700 = Color(0xFF2D2D2D);
   static const Color grey800 = Color(0xFF232323);
   static const Color grey900 = Color(0xFF1B1B1B);
+  static const Color grey1000 = Color(0xffF2F2F2);
 
   // green
 
@@ -114,8 +123,14 @@ class AppColors {
   static const Color warning50Color = Color(0xffFFF0E6);
   static const Color warning2Color = Color(0xffE86100);
   static const Color warning3Color = Color(0xffFFD1B0);
+  static const Color warningBannerBackgroundLight = Color(0xFFFDFAED);
+  static const Color warningBannerBackgroundDark = Color(0xFF3A2C12);
+  static const Color warningBannerBorderLight = Color(0xFFF7E9AB);
+  static const Color warningBannerBorderDark = Color(0xFF5C4A22);
 
   static const Color errorBackground = Color(0xffFBEBEB);
+  static const Color errorBackgroundDark = Color(0xFF3A1F1F);
+  static const Color errorColorDark = Color(0xFFFF6B6B);
   static const Color successColor = green700;
 
   static const Color cardTitleColor = Color(0xFF8A6D43);
@@ -130,7 +145,7 @@ class AppColors {
   static const Color notificationIconBackground = Color(0x331D585E);
 
   // OnBoarding Button
-  static final Color onboardingButton = secondary600;
+  static Color get onboardingButton => secondary600;
   static const Color dotColor = Color(0xff3CBFC8);
   // gradient
 
@@ -170,9 +185,62 @@ class AppColors {
   static Color get buttonLabel => isDark() ? buttonLabelDark : buttonLabelLight;
 
   static Color get iconPrimary => isDark() ? iconPrimaryDark : iconPrimaryLight;
+  static Color get primarySurface =>
+      isDark() ? primary900.withOpacity(0.35) : primary50;
+  static Color get primarySurfaceStrong =>
+      isDark() ? primary900.withOpacity(0.6) : primary100;
+  static Color get primaryBorder => isDark() ? primary700 : primary300;
+  static Color get iconContainerBackground =>
+      isDark() ? primary900.withOpacity(0.35) : primary50;
+  static Color get iconChipBackground =>
+      isDark() ? iconChipBackgroundDark : iconChipBackgroundLight;
+  static Color get circleIconBackground =>
+      isDark() ? primary900.withOpacity(0.35) : circleIconBackgroundLight;
 
-  static Color get errorBorder => errorColor;
-  static Color get errorText => errorColor;
+  static Color get errorBorder => isDark() ? errorColorDark : errorColor;
+  static Color get errorText => isDark() ? errorColorDark : errorColor;
+  static Color get errorForeground => isDark() ? errorColorDark : errorColor;
+  static Color get errorSurface =>
+      isDark() ? errorBackgroundDark : errorBackground;
+
+  static Color get warningBannerBackground =>
+      isDark() ? warningBannerBackgroundDark : warningBannerBackgroundLight;
+  static Color get warningBannerBorder =>
+      isDark() ? warningBannerBorderDark : warningBannerBorderLight;
+
+  static Color get warningSurface =>
+      isDark() ? warningBannerBackgroundDark : warning50Color;
+  static Color get warningBorder =>
+      isDark() ? warningBannerBorderDark : warning3Color;
+  static const Color otpColor = Color(0xFF6C5CE7);
+
+  static Color get cardBackground =>
+      isDark() ? cardBackgroundDark : cardBackgroundLight;
+  static Color get divider => isDark() ? dividerDark : grey50;
+  static Color get border => isDark() ? borderDark : grey100;
+  static Color get neutralSurface => isDark() ? neutralSurfaceDark : grey50;
+  static Color get textMuted => isDark() ? grey100 : grey300;
+  static Color get shimmerBase => isDark() ? grey600 : grey100;
+  static Color get shimmerHighlight => isDark() ? grey500 : grey50;
+  static Color get cardTitle => isDark() ? secondary300 : cardTitleColor;
+  static Color get successBorder => isDark() ? green800 : green100;
+  static Color get secondaryBorder => isDark() ? secondary800 : secondary200;
+  static Color get primaryBorderSoft => isDark() ? primary800 : primary200;
+
+  static Color get successContainerBackground =>
+      isDark() ? green900.withOpacity(0.35) : green50;
+  static Color get secondaryContainerBackground =>
+      isDark() ? secondary900.withOpacity(0.35) : secondary50;
+  static Color get secondaryIconChipBackground =>
+      isDark() ? secondary800.withOpacity(0.5) : secondary100;
+  static Color get secondaryAccent => isDark() ? secondary400 : secondary700;
+
+  // Foregrounds that stay readable on the matching tinted surfaces in dark mode
+  static Color get successForeground => isDark() ? green400 : green700;
+  static Color get warningText => isDark() ? warning3Color : secondErrorColor;
+  static Color get primaryForeground => isDark() ? primary400 : primary700;
+  static Color get primaryText => isDark() ? primary400 : primary800;
+  static Color get primaryTextStrong => isDark() ? primary300 : primary900;
 
   static void setPrimary(
     Color light,

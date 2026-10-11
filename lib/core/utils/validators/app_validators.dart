@@ -67,6 +67,19 @@ class AppValidators {
     }
   }
 
+  /// EMAIL OR USERNAME VALIDATION
+  static String? emailOrUsername(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'validators.email_or_username.required'.tr();
+    }
+    final trimmed = value.trim();
+    if (trimmed.contains('@') &&
+        !RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(trimmed)) {
+      return 'validators.email_or_username.pattern'.tr();
+    }
+    return null;
+  }
+
   /// PASSWORD VALIDATION
   static String? password(String? password) {
     if (password == null || password.isEmpty) {

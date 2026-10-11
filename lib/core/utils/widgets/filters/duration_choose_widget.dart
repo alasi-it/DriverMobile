@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 
 class DurationChooseWidget extends StatefulWidget {
   const DurationChooseWidget({
@@ -71,21 +72,17 @@ class _DurationChooseWidgetState extends State<DurationChooseWidget> {
 
                   widget.onChanged(_selected);
                 },
-                child: Container(
+                child: AppContainer(
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(
                     horizontal: isSelected ? 12.w : 8.w,
                     vertical: 8.h,
                   ),
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? AppColors.primary50
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(12.r),
-                    border: Border.all(
-                      color: isSelected ? AppColors.primary : AppColors.grey300,
-                      width: 1.5.w,
-                    ),
+                  color: isSelected ? AppColors.primary50 : Colors.transparent,
+                  borderRadius: BorderRadius.circular(12.r),
+                  border: Border.all(
+                    color: isSelected ? AppColors.primary : AppColors.grey300,
+                    width: 1.5.w,
                   ),
                   child: FittedBox(
                     fit: BoxFit.scaleDown,

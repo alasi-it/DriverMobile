@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
 import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/status_badge_widget.dart';
 import 'package:isnad_worker/features/home/data/models/order_card_model.dart';
-import 'package:isnad_worker/features/trips/presentation/widgets/status_badge_widget.dart';
 
 class OrderCardWidget extends StatelessWidget {
   const OrderCardWidget({super.key, required this.order});
@@ -141,7 +141,10 @@ class _Header extends StatelessWidget {
           ),
         ),
         SizedBox(width: 8.w),
-        StatusBadgeWidget(status: order.status),
+        StatusBadgeWidget(
+          color: order.status.color,
+          labelKey: order.status.labelKey,
+        ),
       ],
     );
   }
@@ -160,10 +163,13 @@ class _InfoChip extends StatelessWidget {
       spacing: 6.w,
       children: [
         Icon(icon, size: 16.sp, color: AppColors.typographySubtitle),
-        Text(
-          label,
-          style: AppTextStyles.font13Regular.copyWith(
-            color: AppColors.typographyBody,
+        Expanded(
+          child: Text(
+            label,
+            maxLines: 1,
+            style: AppTextStyles.font13Regular.copyWith(
+              color: AppColors.typographyBody,
+            ),
           ),
         ),
       ],
@@ -186,12 +192,11 @@ class _StatBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AppContainer(
       padding: EdgeInsets.symmetric(vertical: 12.h),
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(14.r),
-      ),
+      color: backgroundColor,
+      boxShadow: [],
+      borderRadius: BorderRadius.circular(14.r),
       child: Column(
         spacing: 2.h,
         children: [
@@ -276,25 +281,22 @@ class _StepDot extends StatelessWidget {
       width: _boxSize,
       height: _boxSize,
       child: Center(
-        child: Container(
+        child: AppContainer(
           width: 22.w,
           height: 22.h,
           alignment: Alignment.center,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: AppColors.white,
-            border: Border.all(
-              color: isCompleted ? AppColors.primary700 : AppColors.grey100,
-              width: 2.w,
-            ),
+          padding: EdgeInsets.zero,
+          shape: BoxShape.circle,
+          color: AppColors.white,
+          border: Border.all(
+            color: isCompleted ? AppColors.primary700 : AppColors.grey100,
+            width: 2.w,
           ),
-          child: Container(
+          child: AppContainer(
             width: 16.w,
             height: 16.h,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: isCompleted ? AppColors.primary700 : AppColors.grey100,
-            ),
+            shape: BoxShape.circle,
+            color: isCompleted ? AppColors.primary700 : AppColors.grey100,
           ),
         ),
       ),

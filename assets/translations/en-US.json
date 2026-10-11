@@ -30,7 +30,6 @@
     "no_stack": "No Stack Trace Available",
     "inline_message": "An error occurred in this section"
   },
-   
   "OnBoarding": {
     "skip": "Skip",
     "item1": {
@@ -45,8 +44,8 @@
       "title": "Complete transport operations efficiently and arrive on time",
       "body": "Carry out transport trips safely and easily, complete the delivery process in just a few simple steps, and instantly update the task status to ensure a professional and reliable operational experience."
     }
-  
-}, "auth": {
+  },
+  "auth": {
     "login": {
       "title": "You can log in using your phone number or your registered email",
       "subtitle": "Please enter your phone number",
@@ -60,7 +59,7 @@
       "login_with_ID_number": "Log in with ID number",
       "subtitle_with_ID_number": "Please enter your ID number and password",
       "email": {
-        "title": "Email"
+        "title": "Email or Username"
       },
       "button": "Log in",
       "forgot_password": "Forgot password?",
@@ -101,6 +100,58 @@
     },
     "login_with": "Sign in with"
   },
+  "validators": {
+    "required": "This field is required",
+    "full_name_two_words": "Name must consist of two words",
+    "name_invalid": "Name must contain letters only",
+    "password_too_short": "Password must be more than 6 characters",
+    "length": {
+      "min": "Length must not be less than {length} characters",
+      "max": "Length must not exceed {length} characters",
+      "exact": "Length must be exactly {length} characters"
+    },
+    "stock_min_length": "Quantity must be greater than zero",
+    "email": {
+      "required": "Email is required",
+      "pattern": "Invalid email address"
+    },
+    "email_or_username": {
+      "required": "Email or username is required",
+      "pattern": "Please enter a valid email address"
+    },
+    "password": {
+      "required": "Password is required",
+      "old_new_same": "The old password cannot be the same as the new one",
+      "identical": "Passwords do not match"
+    },
+    "phone": {
+      "phone_required": "Phone number is required",
+      "phone_too_short": "Phone number is too short",
+      "phone_too_long": "Phone number is too long",
+      "required": "Phone number is required",
+      "invalid": "Invalid phone number"
+    },
+    "numbers": {
+      "only": "Number must contain digits only",
+      "exact_length": "Length must be exactly {length}",
+      "less_than": "Number must be less than {max}",
+      "range": "Number must be between {min} and {max}",
+      "greater_than": "Number must be greater than {min}"
+    },
+    "OTP": {
+      "required": "Verification code is required",
+      "length": "Verification code must be 4 digits"
+    },
+    "files": {
+      "required": "File is required",
+      "size_exceeded": "File size exceeds the allowed limit ({max}MB)"
+    }
+  },
+  "nav_bar": {
+    "home": "Home",
+    "trips": "Trips",
+    "profile": "Profile"
+  },
   "home": {
     "order_card": {
       "requests": "Requests",
@@ -121,6 +172,8 @@
   },
   "trips": {
     "details": {
+      "screen_title": "Trip Details",
+      "start_trip_button": "Start Trip",
       "scheduled_date": "Scheduled Date",
       "scheduled_time": "Scheduled Time",
       "assigned_vehicle": "Assigned Vehicle",
@@ -134,11 +187,91 @@
       "destination": "Destination",
       "cancel_request": "Cancel Request",
       "confirm_delivery": "Confirm Delivery",
+      "special_instructions": "Special Instructions",
+      "proof_data": "Proof Data",
+      "otp_verified": "OTP verified",
+      "proof_image_label": "Attached proof photo",
+      "delivery_notes": "Delivery Notes",
       "status": {
         "unconfirmed": "Unconfirmed",
         "confirmed": "Confirmed",
         "cancelled": "Cancelled"
       }
+    },
+    "cancel_sheet": {
+      "title": "Cancel Order",
+      "reason_title": "Cancellation Reason",
+      "notes_title": "Additional Notes",
+      "notes_hint": "Any additional details you'd like to mention...",
+      "confirm_button": "Cancel Order",
+      "reasons": {
+        "passenger_absence": "Passenger absence",
+        "vehicle_breakdown": "Vehicle breakdown",
+        "emergency": "Emergency",
+        "customer_cancellation": "Customer cancellation",
+        "road_accident": "Road accident",
+        "other": "Other reasons"
+      }
+    },
+    "delivery_sheet": {
+      "title": "Delivery Confirmation",
+      "otp_badge": "Verification Code (OTP)",
+      "otp_title": "Verification Code (OTP)",
+      "otp_subtitle": "Enter the 4-digit verification code sent by the system to the worker",
+      "notes_title": "Delivery Notes (Optional)",
+      "notes_hint": "Add any notes related to the delivery process...",
+      "confirm_button": "Confirm Delivery",
+      "success_message": "Verified successfully"
     }
+  },
+  "trips_history": {
+    "card": {
+      "multi_stop": "Multiple Stops",
+      "single_stop": "Single Stop",
+      "requests": "Requests",
+      "passengers": "Passengers",
+      "requests_progress": "Requests",
+      "completed": "Completed",
+      "status": {
+        "completed": "Completed",
+        "partially_completed": "Partially Completed",
+        "cancelled": "Cancelled"
+      }
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "mark_as_read": "Mark as read"
+  },
+  "profile": {
+    "client_file": "Client File",
+    "change_photo": "Change Profile Photo",
+    "account_settings": "Account Settings",
+    "profile": "Personal Information",
+    "change_password": "Change Password",
+    "contact_us": "Contact Us",
+    "polices": "Service Policies",
+    "faq": "FAQ",
+    "assigned_vehicle": "Assigned Vehicle",
+    "plate_number": "Plate Number",
+    "brand_model": "Brand & Model",
+    "vehicle_color": "Color",
+    "vehicle_capacity": "Capacity",
+    "edit_notification_settings": "Notification Settings",
+    "sms": "SMS Messages",
+    "app_notification": "App Notifications",
+    "logout": "Logout",
+    "logout_alert": "Are you sure you want to logout?",
+    "cancel": "Cancel",
+    "Change_Profile_Photo": "Change Profile Photo",
+    "Camera": "Camera",
+    "Gallery": "Gallery",
+    "app_settings": "App Settings",
+    "language": "Language",
+    "update_language": "Update",
+    "theme": "Theme",
+    "light_mode": "Light",
+    "dark_mode": "Dark",
+    "update_theme": "Update"
   }
 }

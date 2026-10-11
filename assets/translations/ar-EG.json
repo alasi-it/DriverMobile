@@ -18,7 +18,6 @@
     "upload_image": "تحميل صورة",
     "upload_file": "تحميل ملف"
   },
-
   "error_screen": {
     "title": "حدث خطأ ما",
     "subtitle": "حدث خطأ غير متوقع، تم تسجيله\nوسيقوم فريقنا بمراجعته.",
@@ -31,7 +30,7 @@
     "no_stack": "لا يوجد تتبع للمكدس",
     "inline_message": "حدث خطأ في هذا الجزء"
   },
-    "OnBoarding": {
+  "OnBoarding": {
     "skip": "تخطي",
     "item1": {
       "title": "استقبل مهام النقل وابدأ رحلتك بكل ثقة",
@@ -46,7 +45,7 @@
       "body": "نفّذ رحلات النقل بأمان وسهولة، وأكمل إجراءات التسليم بخطوات بسيطة، مع تحديث حالة المهمة فورًا لضمان تجربة تشغيل احترافية وموثوقة."
     }
   },
-    "auth": {
+  "auth": {
     "login": {
       "title": "يمكنك تسجيل الدخول باستخدام رقم الهاتف الخاص بك أو عبر البريد الإلكتروني المسجل لدينا",
       "or": "او",
@@ -61,7 +60,7 @@
       "login_with_ID_number": "تسجيل الدخول برقم الهوية",
       "subtitle_with_ID_number": "برجاء ادخال رقم الهوية وكلمة المرور",
       "email": {
-        "title": "البريد الإلكتروني"
+        "title": "البريد الإلكتروني أو اسم المستخدم"
       },
       "button": "تسجيل الدخول",
       "forgot_password": "نسيت كلمة المرور",
@@ -112,7 +111,7 @@
     },
     "login_with_google": "تسجيل الدخول عبر حساب جوجل"
   },
-   "validators": {
+  "validators": {
     "required": "الحقل مطلوب",
     "full_name_two_words": "يجب إدخال الاسم مكون من كلمتين",
     "name_invalid": "الاسم يجب أن يحتوي على حروف فقط",
@@ -126,6 +125,10 @@
     "email": {
       "required": "البريد الإلكتروني مطلوب",
       "pattern": "البريد الإلكتروني غير صالح"
+    },
+    "email_or_username": {
+      "required": "البريد الإلكتروني أو اسم المستخدم مطلوب",
+      "pattern": "برجاء إدخال بريد إلكتروني صالح"
     },
     "password": {
       "required": "كلمة المرور مطلوبة",
@@ -155,7 +158,12 @@
       "size_exceeded": "حجم الملف يتجاوز الحد المسموح ({max}MB)"
     }
   },
-    "home": {
+  "nav_bar": {
+    "home": "الرئيسية",
+    "trips": "الرحلات",
+    "profile": "الملف الشخصي"
+  },
+  "home": {
     "how_can_help": "كيف يمكننا مساعدتك اليوم ؟",
     "welcome": "مرحبا",
     "search": "ابحث",
@@ -188,6 +196,8 @@
   },
   "trips": {
     "details": {
+      "screen_title": "تفاصيل الرحلة",
+      "start_trip_button": "بدء تنفيذ الرحلة",
       "scheduled_date": "التاريخ المجدول",
       "scheduled_time": "الوقت المجدول",
       "assigned_vehicle": "المركبة المخصصة",
@@ -201,11 +211,155 @@
       "destination": "الوجهة",
       "cancel_request": "إلغاء الطلب",
       "confirm_delivery": "تأكيد التسليم",
+      "special_instructions": "تعليمات خاصة",
+      "proof_data": "بيانات الإثبات",
+      "otp_verified": "تم التحقق من رمز OTP",
+      "proof_image_label": "صورة الإثبات المرفقة",
+      "delivery_notes": "ملاحظات التسليم",
       "status": {
         "unconfirmed": "غير مؤكد",
         "confirmed": "مؤكد",
         "cancelled": "ملغي"
       }
+    },
+    "cancel_sheet": {
+      "title": "إلغاء الطلب",
+      "reason_title": "سبب الإلغاء",
+      "notes_title": "ملاحظات إضافية",
+      "notes_hint": "أي تفاصيل إضافية تود ذكرها...",
+      "confirm_button": "إلغاء الطلب",
+      "reasons": {
+        "passenger_absence": "غياب الركاب",
+        "vehicle_breakdown": "تعطل المركبة",
+        "emergency": "ظروف طارئة",
+        "customer_cancellation": "إلغاء العميل",
+        "road_accident": "حادث على الطريق",
+        "other": "أسباب أخرى"
+      }
+    },
+    "delivery_sheet": {
+      "title": "تأكيد التسليم",
+      "otp_badge": "رمز التحقق (OTP)",
+      "otp_title": "رمز التحقق (OTP)",
+      "otp_subtitle": "أدخل رمز التحقق المكوّن من 4 أرقام الذي أرسله النظام للعامل",
+      "notes_title": "ملاحظات التسليم(اختياري)",
+      "notes_hint": "أضف أي ملاحظات تتعلق بعملية التسليم...",
+      "confirm_button": "تأكيد التسليم",
+      "success_message": "تم التحقق بنجاح"
     }
+  },
+  "trips_history": {
+    "Trips_History": "سجل الرحلات",
+    "card": {
+      "multi_stop": "متعددة المحطات",
+      "single_stop": "محطة واحدة",
+      "requests": "طلبات",
+      "passengers": "راكب",
+      "requests_progress": "الطلبات",
+      "completed": "مكتمل",
+      "status": {
+        "completed": "مكتملة",
+        "partially_completed": "مكتملة جزئيًا",
+        "cancelled": "ملغاة"
+      }
+    }
+  },
+  "notifications": {
+    "title": "الإشعارات",
+    "mark_as_read": "تمييز كمقروءة"
+  },
+  "profile": {
+    "logout": "تسجيل الخروج",
+    "profile": " المعلومات الشخصية",
+    "no_addresses": "لا توجد عناوين",
+    "edit_profile": "تعديل الملف الشخصي ",
+    "edit_data": "تعديل البيانات",
+    "save_changes": "حفظ التغييرات",
+    "full_name": "الاسم كامل",
+    "phone": "رقم الجوال",
+    "email": "البريد الالكتروني",
+    "current_password": "كلمة المرور الحالية",
+    "new_password": "كلمة المرور الجديدة",
+    "confirm_new_password": "تأكيد كلمة المرور الجديدة",
+    "change_password": "تغيير كلمة المرور",
+    "edit_notification_settings": "إعدادات الإشعارات",
+    "sms": "رسائل SMS",
+    "app_notification": "تنبيهات التطبيق",
+    "account_settings": "إعدادات الحساب",
+    "client_file": "ملف العميل",
+    "registration_date": "تاريخ التسجيل",
+    "assigned_vehicle": "المركبة المخصصة",
+    "plate_number": "رقم اللوحة",
+    "brand_model": "الماركة والموديل",
+    "vehicle_color": "اللون",
+    "vehicle_capacity": "السعة",
+    "Camera": "الكاميرا",
+    "Gallery": "المعرض",
+    "Change_Profile_Photo": "تغيير صورة الملف الشخصي",
+    "saved_addresses": "عناوينك المسجلة",
+    "add_new_address": "إضافة عنوان جديد",
+    "edit_address": "تعديل العنوان",
+    "delete_address": "حذف العنوان",
+    "default_address": "العنوان الافتراضي",
+    "home": "المنزل",
+    "work": "العمل",
+    "other": "أخرى",
+    "national_id": "رقم الهوية",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "save_address": "حفظ العنوان",
+    "city": "المدينة",
+    "street": "الشارع",
+    "country": "الدولة",
+    "building_number": "رقم المبنى / الشقة",
+    "address_type": "نوع العنوان",
+    "set_default_address": "تعيين عنوان افتراضي",
+    "set_default_address_hint": "استخدم هذا العنوان تلقائيا للطلبات الجديدة",
+    "faq": "الاسئلة الشائعة",
+    "polices": "سياسات الخدمة",
+    "saved_contacts": "جهات الاتصال المحفوظة",
+    "add_new_contact": "إضافة جهة اتصال جديدة",
+    "no_contacts": "لا توجد جهات اتصال",
+    "edit_contact": "تعديل",
+    "delete_contact": "حذف",
+    "deleted_successfully": "تم حذف جهة الاتصال بنجاح",
+    "update_contact": "تحديث جهة الاتصال",
+    "save_contact": "حفظ جهة الاتصال",
+    "updated_successfully": "تم التحديث بنجاح",
+    "added_successfully": "تمت الإضافة بنجاح",
+    "contatcs": "جهات الاتصال",
+    "contact_us": "تواصل معنا",
+    "name": "الاسم ",
+    "change_photo": "تغيير صورة الملف الشخصي",
+    "update_address": "تحديث العنوان",
+    "logout_alert": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+    "language": "اللغة",
+    "update_language": "تحديث",
+    "theme": "المظهر",
+    "light_mode": "فاتح",
+    "dark_mode": "داكن",
+    "update_theme": "تحديث",
+    "app_settings": "إعدادات التطبيق"
+  },
+  "contact_us": {
+    "send": "إرسال",
+    "full_name": "الاسم بالكامل",
+    "full_name_hint": "ادخل الاسم بالكامل",
+    "full_name_required": "الاسم بالكامل مطلوب",
+    "email": "البريد الإلكتروني",
+    "email_hint": "ادخل البريد الإلكتروني",
+    "email_required": "البريد الإلكتروني مطلوب",
+    "email_invalid": "ادخل بريد إلكتروني صحيح",
+    "phone": "رقم الهاتف (اختياري)",
+    "phone_hint": "ادخل رقم الهاتف",
+    "subject": "الموضوع",
+    "subject_hint": "موضوع رسالتك",
+    "subject_required": "الموضوع مطلوب",
+    "message": "الرسالة",
+    "message_hint": "اكتب رسالتك هنا",
+    "message_required": "الرسالة مطلوبة",
+    "success_title": "تم الإرسال بنجاح",
+    "success_desc": "شكراً لتواصلك معنا، سنرد عليك في أقرب وقت ممكن",
+    "done": "تم"
   }
 }

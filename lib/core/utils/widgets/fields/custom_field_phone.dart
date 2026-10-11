@@ -7,6 +7,7 @@ import 'package:flutter_intl_phone_field/country_picker_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/utils/validators/app_validators.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 
 import '/core/style/text_styles.dart';
 
@@ -156,13 +157,11 @@ class _CustomFieldPhoneState extends State<CustomFieldPhone> {
           children: [
             GestureDetector(
               onTap: widget.enabled ? _openCountryPicker : null,
-              child: Container(
+              child: AppContainer(
                 padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
-                decoration: BoxDecoration(
-                  color: inputBg,
-                  borderRadius: BorderRadius.circular(8.r),
-                  border: Border.all(color: _borderColor(), width: 1.5.w),
-                ),
+                color: inputBg,
+                borderRadius: BorderRadius.circular(8.r),
+                border: Border.all(color: _borderColor(), width: 1.5.w),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

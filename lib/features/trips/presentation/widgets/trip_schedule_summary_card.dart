@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/statpill_widget.dart';
 
 class TripScheduleSummaryCard extends StatelessWidget {
   const TripScheduleSummaryCard({
@@ -26,12 +28,10 @@ class TripScheduleSummaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AppContainer(
       padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: AppColors.primary700,
-        borderRadius: BorderRadius.circular(20.r),
-      ),
+      color: AppColors.primary700,
+      borderRadius: BorderRadius.circular(20.r),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -73,7 +73,7 @@ class TripScheduleSummaryCard extends StatelessWidget {
             spacing: 8.w,
             children: [
               Expanded(
-                child: _StatPill(
+                child: StatPillWidget(
                   value: transferRequestsCount.toString(),
                   labelKey: 'trips.details.transfer_requests',
                   backgroundColor: AppColors.white,
@@ -82,7 +82,7 @@ class TripScheduleSummaryCard extends StatelessWidget {
               ),
 
               Expanded(
-                child: _StatPill(
+                child: StatPillWidget(
                   value: confirmedCount.toString(),
                   labelKey: 'trips.details.confirmed',
                   backgroundColor: AppColors.green50,
@@ -90,7 +90,7 @@ class TripScheduleSummaryCard extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: _StatPill(
+                child: StatPillWidget(
                   value: cancelledCount.toString(),
                   labelKey: 'trips.details.cancelled',
                   backgroundColor: AppColors.errorBackground,
@@ -128,41 +128,6 @@ class _InfoField extends StatelessWidget {
           style: AppTextStyles.font14Bold.copyWith(color: AppColors.white),
         ),
       ],
-    );
-  }
-}
-
-class _StatPill extends StatelessWidget {
-  const _StatPill({
-    required this.value,
-    required this.labelKey,
-    required this.backgroundColor,
-    required this.color,
-  });
-
-  final String value;
-  final String labelKey;
-  final Color backgroundColor;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 2.h),
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(14.r),
-      ),
-      child: Column(
-        // spacing: 4.h,
-        children: [
-          Text(value, style: AppTextStyles.font20Bold.copyWith(color: color)),
-          Text(
-            labelKey.tr(),
-            style: AppTextStyles.font14Regular.copyWith(color: color),
-          ),
-        ],
-      ),
     );
   }
 }

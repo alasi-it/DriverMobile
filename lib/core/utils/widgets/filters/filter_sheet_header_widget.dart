@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 
 class FilterSheetHeader extends StatelessWidget {
-  const FilterSheetHeader({super.key, required this.title});
+  const FilterSheetHeader({
+    super.key,
+    this.title = '',
+    this.titleWidget,
+    this.showCloseButton = true,
+  });
   final String title;
+  final Widget? titleWidget;
+  final bool showCloseButton;
 
   @override
   Widget build(BuildContext context) {
@@ -12,37 +20,42 @@ class FilterSheetHeader extends StatelessWidget {
       children: [
         Row(
           children: [
-            InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Container(
-                height: 24.h,
-                width: 24.w,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+            if (showCloseButton) ...[
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: AppContainer(
+                  height: 24.h,
+                  width: 24.w,
+                  padding: EdgeInsets.zero,
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.primary.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(4.r),
-                ),
-                child: Icon(
-                  Icons.close,
-                  color: Theme.of(context).colorScheme.primary,
-                  size: 20.sp,
+                  child: Icon(
+                    Icons.close,
+                    color: Theme.of(context).colorScheme.primary,
+                    size: 20.sp,
+                  ),
                 ),
               ),
-            ),
 
-            SizedBox(width: 16.w),
+              SizedBox(width: 16.w),
+            ],
 
             Expanded(
               child: Align(
                 alignment: Alignment.center,
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                child:
+                    titleWidget ??
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
               ),
             ),
             SizedBox(width: 40.w),

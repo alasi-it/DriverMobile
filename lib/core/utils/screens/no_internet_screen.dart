@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:isnad_worker/core/network/connectivity/network_cubit.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 
 class NoInternetScreen extends StatefulWidget {
   const NoInternetScreen({super.key});
@@ -81,17 +82,16 @@ class _NoInternetScreenState extends State<NoInternetScreen>
   }
 
   Widget _buildIcon() {
-    return Container(
+    return AppContainer(
       width: 130,
       height: 130,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: AppColors.primary.withValues(alpha: 0.08),
-        border: Border.all(
-          color: AppColors.primary.withValues(alpha: 0.25),
-          width: 2,
-        ),
+      shape: BoxShape.circle,
+      color: AppColors.primary.withValues(alpha: 0.08),
+      border: Border.all(
+        color: AppColors.primary.withValues(alpha: 0.25),
+        width: 2,
       ),
+      padding: EdgeInsets.zero,
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -99,17 +99,16 @@ class _NoInternetScreenState extends State<NoInternetScreen>
           Positioned(
             bottom: 20,
             right: 18,
-            child: Container(
+            child: AppContainer(
               width: 24,
               height: 24,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.errorColor,
-                border: Border.all(
-                  color: AppColors.backgroundPrimary,
-                  width: 2,
-                ),
+              shape: BoxShape.circle,
+              color: AppColors.errorColor,
+              border: Border.all(
+                color: AppColors.backgroundPrimary,
+                width: 2,
               ),
+              padding: EdgeInsets.zero,
               child: const Icon(
                 Icons.close_rounded,
                 size: 14,
@@ -137,22 +136,18 @@ class _NoInternetScreenState extends State<NoInternetScreen>
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
+            AppContainer(
               width: 32,
               height: 3,
-              decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.circular(2),
-              ),
+              color: AppColors.primary,
+              borderRadius: BorderRadius.circular(2),
             ),
             const SizedBox(width: 4),
-            Container(
+            AppContainer(
               width: 16,
               height: 3,
-              decoration: BoxDecoration(
-                color: AppColors.secondary,
-                borderRadius: BorderRadius.circular(2),
-              ),
+              color: AppColors.secondary,
+              borderRadius: BorderRadius.circular(2),
             ),
           ],
         ),

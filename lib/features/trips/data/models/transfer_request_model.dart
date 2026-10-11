@@ -27,7 +27,6 @@ extension TransferRequestStatusX on TransferRequestStatus {
   }
 }
 
-/// Data needed to render one transfer request item within a trip's details screen.
 class TransferRequestModel {
   const TransferRequestModel({
     required this.orderId,

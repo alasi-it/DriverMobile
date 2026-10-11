@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/utils/widgets/images/cached_image_widget.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 import 'package:isnad_worker/core/utils/widgets/layout/custom_app_bar.dart';
 
 class ImagePreviewDialog extends StatelessWidget {
@@ -55,12 +56,11 @@ class ImagePreviewDialog extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 32.h, top: 8.h),
-              child: Container(
+              child: AppContainer(
                 padding: EdgeInsets.all(3.w),
-                decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.primary, width: 2.w),
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
+                color: Colors.transparent,
+                border: Border.all(color: AppColors.primary, width: 2.w),
+                borderRadius: BorderRadius.circular(10.r),
                 child: CachedImageWidget(
                   directoryId: directoryId,
                   fileId: fileId,

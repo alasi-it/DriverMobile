@@ -7,6 +7,7 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 import 'package:isnad_worker/core/network/connectivity/network_cubit.dart';
 import 'package:isnad_worker/core/routing/app_navigator.dart';
 import 'package:isnad_worker/core/style/app_theme.dart';
+import 'package:isnad_worker/core/utils/controllers/locale/locale_cubit.dart';
 import 'package:isnad_worker/core/utils/controllers/theme/theme_cubit.dart';
 import 'package:isnad_worker/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:isnad_worker/features/intro/splash/presentation/screens/splash_screen.dart';
@@ -33,7 +34,8 @@ class MainApplication extends StatelessWidget {
                   internetChecker: InternetConnection(),
                 ),
               ),
-              BlocProvider(create: (_) => ThemeCubit()..getSettings()),
+              BlocProvider(create: (_) => ThemeCubit()),
+              BlocProvider(create: (_) => LocaleCubit()),
               BlocProvider(create: (_) => AuthCubit()),
               // BlocProvider(
               //   lazy: false,
@@ -41,10 +43,11 @@ class MainApplication extends StatelessWidget {
               // ),
             ],
             child: BlocBuilder<ThemeCubit, ThemeState>(
-              builder: (context, state) {
-                final cubit = ThemeCubit.get(context);
+              buildWhen: (previous, current) =>
+                  previous.isDark != current.isDark,
+              builder: (context, themeState) {
                 return MaterialApp(
-                  themeMode: cubit.mode,
+                  themeMode: themeState.mode,
                   theme: AppTheme.light,
                   darkTheme: AppTheme.dark,
                   locale: context.locale,

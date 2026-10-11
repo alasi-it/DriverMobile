@@ -5,18 +5,25 @@ import 'package:isnad_worker/core/lookups/data/models/language_model.dart';
 import 'package:isnad_worker/core/lookups/data/models/private_service_model.dart';
 import 'package:isnad_worker/core/lookups/data/models/skill_model.dart';
 import 'package:isnad_worker/core/lookups/domain/use_case/get_cities_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_countries_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_job_titles_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_languages_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_private_services_use_case.dart';
+import 'package:isnad_worker/core/lookups/domain/use_case/get_skills_use_case.dart';
 import 'package:isnad_worker/core/network/errors/exception.dart';
 import 'package:isnad_worker/core/network/remote/apis/dio_helper.dart';
 import 'package:isnad_worker/core/network/remote/apis/hanlders/remote_data_source_handler.dart';
 import 'package:isnad_worker/core/network/remote/end_points.dart';
 
 abstract class LookupsRemoteDataSource {
-  Future<List<CountryModel>> getCountries();
+  Future<List<CountryModel>> getCountries(GetCountriesUseCaseParams params);
   Future<List<CityModel>> getCities(GetCitiesUseCaseParams params);
-  Future<List<JobModel>> getJobTitles();
-  Future<List<SkillModel>> getSkills();
-  Future<List<LanguageModel>> getLanguages();
-  Future<List<PrivateServiceModel>> getPrivateServices();
+  Future<List<JobModel>> getJobTitles(GetJobTitlesUseCaseParams params);
+  Future<List<SkillModel>> getSkills(GetSkillsUseCaseParams params);
+  Future<List<LanguageModel>> getLanguages(GetLanguagesUseCaseParams params);
+  Future<List<PrivateServiceModel>> getPrivateServices(
+    GetPrivateServicesUseCaseParams params,
+  );
 }
 
 class LookupsRemoteDataSourceImpl implements LookupsRemoteDataSource {
@@ -25,9 +32,11 @@ class LookupsRemoteDataSourceImpl implements LookupsRemoteDataSource {
   LookupsRemoteDataSourceImpl({required this.networkManager});
 
   @override
-  Future<List<CountryModel>> getCountries() async {
+  Future<List<CountryModel>> getCountries(
+    GetCountriesUseCaseParams params,
+  ) async {
     final data = await RemoteDataSourceCallHandler().call<List<CountryModel>>(
-      () => networkManager.get(url: COUNTRIES_URL, query: {'IsActive': 'true'}),
+      () => networkManager.get(url: COUNTRIES_URL, query: params.toMap()),
       (json) =>
           List<CountryModel>.from(json.map((x) => CountryModel.fromJson(x))),
     );
@@ -48,9 +57,9 @@ class LookupsRemoteDataSourceImpl implements LookupsRemoteDataSource {
   }
 
   @override
-  Future<List<JobModel>> getJobTitles() async {
+  Future<List<JobModel>> getJobTitles(GetJobTitlesUseCaseParams params) async {
     final data = await RemoteDataSourceCallHandler().call<List<JobModel>>(
-      () => networkManager.get(url: JOBS_URL, query: {'IsActive': 'true'}),
+      () => networkManager.get(url: JOBS_URL, query: params.toMap()),
       (json) => List<JobModel>.from(json.map((x) => JobModel.fromJson(x))),
     );
 
@@ -58,9 +67,9 @@ class LookupsRemoteDataSourceImpl implements LookupsRemoteDataSource {
   }
 
   @override
-  Future<List<SkillModel>> getSkills() async {
+  Future<List<SkillModel>> getSkills(GetSkillsUseCaseParams params) async {
     final data = await RemoteDataSourceCallHandler().call<List<SkillModel>>(
-      () => networkManager.get(url: SKILLS_URL, query: {'IsActive': 'true'}),
+      () => networkManager.get(url: SKILLS_URL, query: params.toMap()),
       (json) => List<SkillModel>.from(json.map((x) => SkillModel.fromJson(x))),
     );
 
@@ -68,9 +77,11 @@ class LookupsRemoteDataSourceImpl implements LookupsRemoteDataSource {
   }
 
   @override
-  Future<List<LanguageModel>> getLanguages() async {
+  Future<List<LanguageModel>> getLanguages(
+    GetLanguagesUseCaseParams params,
+  ) async {
     final data = await RemoteDataSourceCallHandler().call<List<LanguageModel>>(
-      () => networkManager.get(url: LANGUAGES_URL),
+      () => networkManager.get(url: LANGUAGES_URL, query: params.toMap()),
       (json) =>
           List<LanguageModel>.from(json.map((x) => LanguageModel.fromJson(x))),
     );
@@ -79,15 +90,14 @@ class LookupsRemoteDataSourceImpl implements LookupsRemoteDataSource {
   }
 
   @override
-  Future<List<PrivateServiceModel>> getPrivateServices() async {
+  Future<List<PrivateServiceModel>> getPrivateServices(
+    GetPrivateServicesUseCaseParams params,
+  ) async {
     final data = await RemoteDataSourceCallHandler()
         .call<List<PrivateServiceModel>>(
           () => networkManager.get(
             url: PRIVATE_SERVICES_URL,
-            query: {
-              'ServiceType': 'recruitmentClient',
-              'IsAvailableForPrivate': 'true',
-            },
+            query: params.toMap(),
           ),
           (json) => List<PrivateServiceModel>.from(
             json.map((x) => PrivateServiceModel.fromJson(x)),

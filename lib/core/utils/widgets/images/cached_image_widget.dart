@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:isnad_worker/core/constant/app_assets.dart';
 import 'package:isnad_worker/core/network/remote/end_points.dart';
 import 'package:isnad_worker/core/services/file_loader_service.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CachedImageWidget extends StatelessWidget {
@@ -117,13 +118,11 @@ Widget _shimmer(double? height, double? width, [double? radius]) {
   return Shimmer.fromColors(
     baseColor: Colors.grey.shade300,
     highlightColor: Colors.grey.shade100,
-    child: Container(
+    child: AppContainer(
       height: height ?? 120,
       width: width ?? double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.grey.shade300,
-        borderRadius: BorderRadius.circular(radius ?? 0),
-      ),
+      color: Colors.grey.shade300,
+      borderRadius: BorderRadius.circular(radius ?? 0),
     ),
   );
 }

@@ -8,6 +8,7 @@ import 'package:isnad_worker/core/routing/app_navigator.dart';
 import 'package:isnad_worker/core/style/app_colors.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
 import 'package:isnad_worker/core/utils/widgets/images/cached_image_widget.dart';
+import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 import 'package:isnad_worker/features/home/presentation/widgets/home_search_filed_widget.dart';
 import 'package:isnad_worker/features/notification/presentation/screens/notification_screen.dart';
 
@@ -109,19 +110,18 @@ class _NotificationBellWidget extends StatelessWidget {
       onTap: () {
         AppNavigator.push(NotificationScreen());
       },
-      child: Container(
+      child: AppContainer(
         padding: EdgeInsets.all(12.r),
-        decoration: BoxDecoration(
-          color: AppColors.notificationIconBackground,
-          shape: BoxShape.circle,
-          border: GradientBoxBorder(
-            width: .5.w,
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+        boxShadow: [],
+        color: AppColors.notificationIconBackground,
+        shape: BoxShape.circle,
+        border: GradientBoxBorder(
+          width: .5.w,
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
 
-              colors: [Colors.white, Colors.transparent, Colors.white],
-            ),
+            colors: [Colors.white, Colors.transparent, Colors.white],
           ),
         ),
         child: SvgPicture.asset(

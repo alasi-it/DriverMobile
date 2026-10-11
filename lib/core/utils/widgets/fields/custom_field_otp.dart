@@ -11,13 +11,18 @@ class CustomFieldOtp extends StatelessWidget {
     required this.onComplete,
     required this.controller,
     required this.keyboardType,
+    this.radius,
+    this.fontSize,
+    this.fontWeight,
   });
 
   final VoidCallback onComplete;
   final TextInputType keyboardType;
   final TextEditingController controller;
+  final double? radius;
+  final double? fontSize;
+  final FontWeight? fontWeight;
 
-  // ✅ Helper — تابلت لو shortest side >= 600
   bool _isTablet(BuildContext context) =>
       MediaQuery.of(context).size.shortestSide >= 600;
 
@@ -36,12 +41,11 @@ class CustomFieldOtp extends StatelessWidget {
         ? AppColors.inputOutlineDark
         : AppColors.inputOutlineLight;
 
-    // ✅ Sizes بتتغير حسب نوع الجهاز
-    final double fieldWidth = isTablet ? 110.w : 71.w;
-    final double fieldHeight = isTablet ? 110.h : 71.h;
-    final double fontSize = isTablet ? 32.sp : 24.sp;
+    final double fieldWidth = 48.w;
+    final double fieldHeight = 48.h;
+    final double fontSize = this.fontSize?.sp ?? (isTablet ? 32.sp : 24.sp);
     final double borderWidth = isTablet ? 1.5.sp : 1.sp;
-    final double radius = isTablet ? 24.r : 20.r;
+    final double radius = this.radius ?? (isTablet ? 24.r : 20.r);
     final double errorSpace = isTablet ? 40.h : 30.h;
 
     return Directionality(
@@ -59,7 +63,7 @@ class CustomFieldOtp extends StatelessWidget {
           fieldWidth: fieldWidth,
           selectedColor: AppColors.primary,
           fieldHeight: fieldHeight,
-          fieldOuterPadding: EdgeInsets.zero,
+          fieldOuterPadding: EdgeInsets.symmetric(horizontal: 8.w),
           inactiveColor: outline,
           activeFillColor: inputBg,
           inactiveFillColor: inputBg,
@@ -73,7 +77,7 @@ class CustomFieldOtp extends StatelessWidget {
         cursorColor: AppColors.primary,
         textStyle: AppTextStyles.ts(
           fontSize,
-          FontWeight.w700,
+          fontWeight ?? FontWeight.w700,
         ).copyWith(color: heading),
         beforeTextPaste: (text) => true,
         onCompleted: (v) => onComplete(),
@@ -81,7 +85,7 @@ class CustomFieldOtp extends StatelessWidget {
         backgroundColor: Colors.transparent,
         errorTextSpace: errorSpace,
         autovalidateMode: AutovalidateMode.disabled,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.center,
         animationDuration: const Duration(milliseconds: 300),
       ),
     );
