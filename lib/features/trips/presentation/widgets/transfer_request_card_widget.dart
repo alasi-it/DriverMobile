@@ -31,7 +31,7 @@ class TransferRequestCardWidget extends StatelessWidget {
             badgeLabelKey: request.status.labelKey,
           ),
           SizedBox(height: 16.h),
-          Divider(height: 1.h, color: AppColors.grey50),
+          Divider(height: 1.h, color: AppColors.divider),
           SizedBox(height: 16.h),
           RouteAddressesRow(
             pickupLocationName: request.pickupLocationName,
@@ -47,7 +47,7 @@ class TransferRequestCardWidget extends StatelessWidget {
             destinationContactPhone: request.destinationContactPhone,
           ),
           SizedBox(height: 16.h),
-          Divider(height: 1.h, color: AppColors.grey50),
+          Divider(height: 1.h, color: AppColors.divider),
           SizedBox(height: 16.h),
           _Actions(request: request),
         ],

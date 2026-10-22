@@ -42,7 +42,7 @@ class ProfileInfoItemWidget extends StatelessWidget {
           child: Text(
             value,
             style: AppTextStyles.font14Medium.copyWith(
-              color: AppColors.grey400,
+              color: AppColors.typographySubtitle,
             ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

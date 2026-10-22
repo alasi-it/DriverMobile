@@ -104,8 +104,8 @@ class CustomSearchFiledWithFilterWidget extends StatelessWidget {
                 boxShadow: [],
                 padding: EdgeInsets.all(12.r),
                 shape: BoxShape.circle,
-                color: AppColors.white,
-                border: Border.all(color: AppColors.grey100),
+                color: AppColors.cardBackground,
+                border: Border.all(color: AppColors.border),
                 child: SvgPicture.asset(
                   AppIcons.mageFilter,
                   height: 22.h,

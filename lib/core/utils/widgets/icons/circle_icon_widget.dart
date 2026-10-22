@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
+import 'package:isnad_worker/core/style/app_colors.dart';
 
 class CircleIconWidget extends StatelessWidget {
   final String icon;
@@ -27,7 +28,7 @@ class CircleIconWidget extends StatelessWidget {
     return AppContainer(
       padding: padding ?? EdgeInsets.zero,
       shape: BoxShape.circle,
-      color: backgroundColor ?? const Color(0xFFD7EFF0),
+      color: backgroundColor ?? AppColors.circleIconBackground,
       border: borderColor != null
           ? Border.all(color: borderColor!, width: 1.w)
           : null,

@@ -74,15 +74,17 @@ class OrderCardWidget extends StatelessWidget {
                     child: _StatBox(
                       value: order.passengersCount.toString(),
                       labelKey: 'home.order_card.passengers',
-                      backgroundColor: AppColors.primary50,
-                      valueColor: AppColors.primary800,
+                      backgroundColor: AppColors.primarySurface,
+                      valueColor: AppColors.primaryText,
                     ),
                   ),
                   Expanded(
                     child: _StatBox(
                       value: order.requestsCount.toString(),
                       labelKey: 'home.order_card.requests',
-                      backgroundColor: AppColors.grey50.withOpacity(0.5),
+                      backgroundColor: AppColors.neutralSurface.withOpacity(
+                        0.5,
+                      ),
                       valueColor: AppColors.typographyHeading,
                     ),
                   ),
@@ -99,7 +101,7 @@ class OrderCardWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              Divider(height: 1.h, color: AppColors.grey50),
+              Divider(height: 1.h, color: AppColors.divider),
               _OrderTimeline(steps: order.steps),
             ],
           ),
@@ -287,16 +289,16 @@ class _StepDot extends StatelessWidget {
           alignment: Alignment.center,
           padding: EdgeInsets.zero,
           shape: BoxShape.circle,
-          color: AppColors.white,
+          color: AppColors.cardBackground,
           border: Border.all(
-            color: isCompleted ? AppColors.primary700 : AppColors.grey100,
+            color: isCompleted ? AppColors.primary700 : AppColors.border,
             width: 2.w,
           ),
           child: AppContainer(
             width: 16.w,
             height: 16.h,
             shape: BoxShape.circle,
-            color: isCompleted ? AppColors.primary700 : AppColors.grey100,
+            color: isCompleted ? AppColors.primary700 : AppColors.border,
           ),
         ),
       ),
@@ -316,7 +318,7 @@ class _StepConnector extends StatelessWidget {
       child: CustomPaint(
         size: Size.infinite,
         painter: _DottedLinePainter(
-          color: isCompleted ? AppColors.primary700 : AppColors.grey100,
+          color: isCompleted ? AppColors.primary700 : AppColors.border,
           dotRadius: 1.3.w,
           gap: 5.w,
         ),

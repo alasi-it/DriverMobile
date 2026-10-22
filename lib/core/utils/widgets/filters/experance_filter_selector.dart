@@ -68,10 +68,12 @@ class _RadioFilterWidgetState extends State<RadioFilterWidget> {
               },
               child: AppContainer(
                 padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-                color: isSelected ? AppColors.primary50 : Colors.transparent,
+                color: isSelected
+                    ? AppColors.primarySurface
+                    : Colors.transparent,
                 borderRadius: BorderRadius.circular(12.r),
                 border: Border.all(
-                  color: isSelected ? AppColors.primary : AppColors.grey300,
+                  color: isSelected ? AppColors.primary : AppColors.border,
                   width: 1.5.w,
                 ),
                 child: Row(
@@ -87,7 +89,7 @@ class _RadioFilterWidgetState extends State<RadioFilterWidget> {
                       border: Border.all(
                         color: isSelected
                             ? AppColors.primary
-                            : AppColors.grey300,
+                            : AppColors.border,
                         width: 1.5.w,
                       ),
                     ),
@@ -98,7 +100,7 @@ class _RadioFilterWidgetState extends State<RadioFilterWidget> {
                       style: AppTextStyles.font13Medium.copyWith(
                         color: isSelected
                             ? AppColors.primary
-                            : AppColors.grey600,
+                            : AppColors.typographyBody,
                       ),
                     ),
                   ],

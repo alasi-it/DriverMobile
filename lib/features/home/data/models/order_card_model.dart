@@ -20,13 +20,13 @@ extension OrderStatusX on OrderStatus {
   Color get color {
     switch (this) {
       case OrderStatus.active:
-        return AppColors.green700;
+        return AppColors.successForeground;
       case OrderStatus.pending:
         return AppColors.warning2Color;
       case OrderStatus.completed:
         return AppColors.primary700;
       case OrderStatus.cancelled:
-        return AppColors.errorColor;
+        return AppColors.errorForeground;
     }
   }
 }

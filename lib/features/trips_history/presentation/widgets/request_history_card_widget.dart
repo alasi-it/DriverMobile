@@ -61,7 +61,7 @@ class RequestHistoryCardWidget extends StatelessWidget {
             badgeLabelKey: status.labelKey,
           ),
           SizedBox(height: 16.h),
-          Divider(height: 1.h, color: AppColors.grey50),
+          Divider(height: 1.h, color: AppColors.divider),
           SizedBox(height: 16.h),
           RouteAddressesRow(
             pickupLocationName: pickupLocationName,
@@ -85,7 +85,7 @@ class RequestHistoryCardWidget extends StatelessWidget {
           AppContainer(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
             width: double.infinity,
-            color: AppColors.grey1000,
+            color: AppColors.neutralSurface,
             borderRadius: BorderRadius.circular(8.r),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,7 +119,7 @@ class _SpecialInstructions extends StatelessWidget {
     return AppContainer(
       width: double.infinity,
       padding: EdgeInsets.all(12.w),
-      color: AppColors.primary50,
+      color: AppColors.primarySurface,
       borderRadius: BorderRadius.circular(12.r),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,7 +128,7 @@ class _SpecialInstructions extends StatelessWidget {
           Text(
             'trips.request_item.special_instructions'.tr(),
             style: AppTextStyles.font12SemiBold.copyWith(
-              color: AppColors.primary700,
+              color: AppColors.primaryForeground,
             ),
           ),
           Text(
@@ -182,7 +182,11 @@ class _ProofOfDelivery extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             spacing: 6.w,
             children: [
-              Icon(Icons.check_circle, size: 18.sp, color: AppColors.green700),
+              Icon(
+                Icons.check_circle,
+                size: 18.sp,
+                color: AppColors.successForeground,
+              ),
               Text(
                 'trips.request_item.otp_verified'.tr(),
                 style: AppTextStyles.font13Bold.copyWith(

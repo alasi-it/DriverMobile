@@ -74,7 +74,10 @@ class ProfileHeaderWidget extends StatelessWidget {
               height: 120.h,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: AppColors.primary200, width: 3.w),
+                border: Border.all(
+                  color: AppColors.primaryBorderSoft,
+                  width: 3.w,
+                ),
               ),
               child: ClipOval(
                 child: fileImage != null
@@ -110,7 +113,9 @@ class ProfileHeaderWidget extends StatelessWidget {
 
         Text(
           phone,
-          style: AppTextStyles.font12Regular.copyWith(color: AppColors.grey300),
+          style: AppTextStyles.font12Regular.copyWith(
+            color: AppColors.textMuted,
+          ),
         ),
       ],
     );
@@ -134,7 +139,7 @@ class _ImageSourceSheet extends StatelessWidget {
             width: 40.w,
             height: 4.h,
             decoration: BoxDecoration(
-              color: AppColors.grey100,
+              color: AppColors.border,
               borderRadius: BorderRadius.circular(100.r),
             ),
           ),
@@ -189,7 +194,7 @@ class _SourceTile extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.grey100),
+          border: Border.all(color: AppColors.border),
           borderRadius: BorderRadius.circular(12.r),
         ),
         child: Row(

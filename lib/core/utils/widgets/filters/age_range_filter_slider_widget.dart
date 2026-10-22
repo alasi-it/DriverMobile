@@ -61,15 +61,15 @@ class _AgeRangeFilterSliderState extends State<AgeRangeFilterSlider> {
             showTicks: false,
             enableTooltip: true,
             stepSize: 1,
-            inactiveColor: AppColors.primary50,
+            inactiveColor: AppColors.primarySurface,
             endThumbIcon: AppContainer(
               shape: BoxShape.circle,
-              color: AppColors.primary50,
+              color: AppColors.primarySurface,
               border: Border.all(color: AppColors.primary, width: 2.w),
             ),
             startThumbIcon: AppContainer(
               shape: BoxShape.circle,
-              color: AppColors.primary50,
+              color: AppColors.primarySurface,
               border: Border.all(color: AppColors.primary, width: 2.w),
             ),
             labelFormatterCallback: (actualValue, formattedText) {

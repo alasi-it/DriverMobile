@@ -12,17 +12,17 @@ class TripSummaryCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppContainer(
       border: BorderDirectional(
-        start: BorderSide(color: AppColors.green700, width: 4.w),
+        start: BorderSide(color: AppColors.successForeground, width: 4.w),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 16.h,
         children: [
           Text('ملخص الرحلة', style: AppTextStyles.font16Bold),
-          const KeyValueRowWidget(
+          KeyValueRowWidget(
             title: 'الحالة النهائية',
             value: 'مكتملة',
-            valueColor: AppColors.green700,
+            valueColor: AppColors.successForeground,
           ),
           const KeyValueRowWidget(
             title: 'موعد الجدول',

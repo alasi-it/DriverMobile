@@ -84,7 +84,7 @@ class _PoliciesScreenState extends State<PoliciesScreen> {
                       Text(
                         section['header']!,
                         style: AppTextStyles.font20Bold.copyWith(
-                          color: AppColors.primary900,
+                          color: AppColors.primaryTextStrong,
                         ),
                       ),
                       SizedBox(height: 12.h),
@@ -120,9 +120,9 @@ class _PoliciesScreenState extends State<PoliciesScreen> {
                                           width: 3.w,
                                           height: 3.h,
 
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                             shape: BoxShape.circle,
-                                            color: Colors.black,
+                                            color: AppColors.typographyHeading,
                                           ),
                                         ),
                                         Expanded(

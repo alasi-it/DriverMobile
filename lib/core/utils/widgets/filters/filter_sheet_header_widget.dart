@@ -29,9 +29,7 @@ class FilterSheetHeader extends StatelessWidget {
                   height: 24.h,
                   width: 24.w,
                   padding: EdgeInsets.zero,
-                  color: Theme.of(
-                    context,
-                  ).colorScheme.primary.withOpacity(0.1),
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(4.r),
                   child: Icon(
                     Icons.close,
@@ -63,7 +61,7 @@ class FilterSheetHeader extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.h),
-          child: Divider(thickness: 1.h, color: AppColors.primary50),
+          child: Divider(thickness: 1.h, color: AppColors.primarySurface),
         ),
       ],
     );

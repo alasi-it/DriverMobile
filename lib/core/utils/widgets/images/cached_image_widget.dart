@@ -9,6 +9,7 @@ import 'package:isnad_worker/core/network/remote/end_points.dart';
 import 'package:isnad_worker/core/services/file_loader_service.dart';
 import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:isnad_worker/core/style/app_colors.dart';
 
 class CachedImageWidget extends StatelessWidget {
   const CachedImageWidget({
@@ -116,12 +117,12 @@ class CachedImageWidget extends StatelessWidget {
 
 Widget _shimmer(double? height, double? width, [double? radius]) {
   return Shimmer.fromColors(
-    baseColor: Colors.grey.shade300,
-    highlightColor: Colors.grey.shade100,
+    baseColor: AppColors.shimmerBase,
+    highlightColor: AppColors.shimmerHighlight,
     child: AppContainer(
       height: height ?? 120,
       width: width ?? double.infinity,
-      color: Colors.grey.shade300,
+      color: AppColors.shimmerBase,
       borderRadius: BorderRadius.circular(radius ?? 0),
     ),
   );

@@ -84,10 +84,12 @@ class _SingleChoiceFilterWidgetState extends State<SingleChoiceFilterWidget> {
                   horizontal: isSelected ? 12.w : 8.w,
                   vertical: 4.h,
                 ),
-                color: isSelected ? AppColors.primary50 : Colors.transparent,
+                color: isSelected
+                    ? AppColors.primarySurface
+                    : Colors.transparent,
                 borderRadius: BorderRadius.circular(12.r),
                 border: Border.all(
-                  color: isSelected ? AppColors.primary : AppColors.grey300,
+                  color: isSelected ? AppColors.primary : AppColors.border,
                   width: 1.5.w,
                 ),
                 child: Row(
@@ -102,7 +104,7 @@ class _SingleChoiceFilterWidgetState extends State<SingleChoiceFilterWidget> {
                       style: AppTextStyles.font13Medium.copyWith(
                         color: isSelected
                             ? AppColors.primary
-                            : AppColors.grey600,
+                            : AppColors.typographyBody,
                       ),
                     ),
                   ],

@@ -76,8 +76,8 @@ class TripScheduleSummaryCard extends StatelessWidget {
                 child: StatPillWidget(
                   value: transferRequestsCount.toString(),
                   labelKey: 'trips.details.transfer_requests',
-                  backgroundColor: AppColors.white,
-                  color: AppColors.typographyHeadingLight,
+                  backgroundColor: AppColors.cardBackground,
+                  color: AppColors.typographyHeading,
                 ),
               ),
 
@@ -85,16 +85,16 @@ class TripScheduleSummaryCard extends StatelessWidget {
                 child: StatPillWidget(
                   value: confirmedCount.toString(),
                   labelKey: 'trips.details.confirmed',
-                  backgroundColor: AppColors.green50,
-                  color: AppColors.green700,
+                  backgroundColor: AppColors.successContainerBackground,
+                  color: AppColors.successForeground,
                 ),
               ),
               Expanded(
                 child: StatPillWidget(
                   value: cancelledCount.toString(),
                   labelKey: 'trips.details.cancelled',
-                  backgroundColor: AppColors.errorBackground,
-                  color: AppColors.errorColor,
+                  backgroundColor: AppColors.errorSurface,
+                  color: AppColors.errorForeground,
                 ),
               ),
             ],

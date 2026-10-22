@@ -20,8 +20,8 @@ class LogoutButton extends StatelessWidget {
           LogoutSheet.show(context);
         },
         icon: AppIcons.logoutIcon,
-        bgColor: AppColors.errorBackground,
-        textColor: AppColors.errorColor,
+        bgColor: AppColors.errorSurface,
+        textColor: AppColors.errorForeground,
       ),
     );
   }

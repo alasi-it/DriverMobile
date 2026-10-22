@@ -49,7 +49,7 @@ class _LogoutContent extends StatelessWidget {
             Text(
               "profile.logout_alert".tr(),
               style: AppTextStyles.font18Bold.copyWith(
-                color: AppColors.inputOutlineDark,
+                color: AppColors.typographyHeading,
               ),
             ),
 
@@ -62,7 +62,7 @@ class _LogoutContent extends StatelessWidget {
                   child: CustomButton(
                     title: 'profile.cancel'.tr(),
                     onTap: () => Navigator.pop(context),
-                    bgColor: Colors.white,
+                    bgColor: AppColors.cardBackground,
                     textColor: AppColors.primary,
                     borderColor: AppColors.primary,
                     borderRadius: BorderRadius.circular(8),

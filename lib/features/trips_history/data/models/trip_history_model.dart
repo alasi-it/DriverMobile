@@ -18,11 +18,11 @@ extension TripHistoryStatusX on TripHistoryStatus {
   Color get color {
     switch (this) {
       case TripHistoryStatus.completed:
-        return AppColors.green700;
+        return AppColors.successForeground;
       case TripHistoryStatus.partiallyCompleted:
         return AppColors.warning2Color;
       case TripHistoryStatus.cancelled:
-        return AppColors.errorColor;
+        return AppColors.errorForeground;
     }
   }
 }

@@ -71,7 +71,9 @@ class TripHistoryCardWidget extends StatelessWidget {
                     child: _StatBox(
                       value: trip.requestsCount.toString(),
                       labelKey: 'trips_history.card.requests',
-                      backgroundColor: AppColors.grey50.withValues(alpha: 0.5),
+                      backgroundColor: AppColors.neutralSurface.withValues(
+                        alpha: 0.5,
+                      ),
                       valueColor: AppColors.typographyHeading,
                     ),
                   ),
@@ -79,8 +81,8 @@ class TripHistoryCardWidget extends StatelessWidget {
                     child: _StatBox(
                       value: trip.passengersCount.toString(),
                       labelKey: 'trips_history.card.passengers',
-                      backgroundColor: AppColors.primary50,
-                      valueColor: AppColors.primary800,
+                      backgroundColor: AppColors.primarySurface,
+                      valueColor: AppColors.primaryText,
                     ),
                   ),
                 ],
@@ -256,7 +258,7 @@ class _RequestsProgress extends StatelessWidget {
           child: LinearProgressIndicator(
             value: progress,
             minHeight: 6.h,
-            backgroundColor: AppColors.grey50,
+            backgroundColor: AppColors.neutralSurface,
             valueColor: AlwaysStoppedAnimation<Color>(trip.status.color),
           ),
         ),

@@ -13,7 +13,7 @@ class SectionLabelWidget extends StatelessWidget {
       alignment: AlignmentDirectional.topStart,
       child: Text(
         label,
-        style: AppTextStyles.font14Regular.copyWith(color: AppColors.grey300),
+        style: AppTextStyles.font14Regular.copyWith(color: AppColors.textMuted),
       ),
     );
   }

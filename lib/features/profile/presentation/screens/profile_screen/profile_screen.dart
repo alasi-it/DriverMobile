@@ -151,7 +151,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     initialValue: true,
                   ),
                   8.verticalSpace,
-                  CustomDivider(color: AppColors.primary50, hight: 1.8.h),
+                  CustomDivider(color: AppColors.divider, hight: 1.8.h),
                   8.verticalSpace,
 
                   ProfileNotificationTileWidget(
@@ -279,7 +279,7 @@ class _loading extends StatelessWidget {
                   initialValue: true,
                 ),
                 8.verticalSpace,
-                CustomDivider(color: AppColors.primary50, hight: 1.8.h),
+                CustomDivider(color: AppColors.divider, hight: 1.8.h),
                 8.verticalSpace,
 
                 ProfileNotificationTileWidget(

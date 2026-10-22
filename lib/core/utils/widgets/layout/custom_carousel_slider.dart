@@ -110,7 +110,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
             position: _currentIndex.toDouble(),
             decorator: DotsDecorator(
               activeColor: AppColors.dotColor,
-              color: Colors.grey.shade400,
+              color: AppColors.border,
               spacing: EdgeInsets.symmetric(horizontal: 4.w),
               size: Size(8.w, 8.h),
               activeSize: Size(8.w, 8.h),

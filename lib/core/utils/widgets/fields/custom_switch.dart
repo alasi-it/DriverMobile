@@ -34,7 +34,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
   @override
   Widget build(BuildContext context) {
     final Color activeTrack = AppColors.primary;
-    const Color inactiveTrack = AppColors.grey50;
+    final Color inactiveTrack = AppColors.neutralSurface;
     const Color thumbColor = Colors.white;
 
     return GestureDetector(

@@ -46,7 +46,7 @@ class _TimeSelectorState extends State<_TimeSelector> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.white,
+      color: AppColors.cardBackground,
 
       child: GridView.builder(
         shrinkWrap: true,
@@ -71,10 +71,12 @@ class _TimeSelectorState extends State<_TimeSelector> {
             child: AppContainer(
               alignment: Alignment.center,
               padding: EdgeInsets.zero,
-              color: isSelected ? AppColors.primary50 : AppColors.white,
+              color: isSelected
+                  ? AppColors.primarySurface
+                  : AppColors.cardBackground,
               borderRadius: BorderRadius.circular(12.r),
               border: Border.all(
-                color: isSelected ? AppColors.primary : AppColors.grey200,
+                color: isSelected ? AppColors.primary : AppColors.border,
                 width: 1.5.w,
               ),
               child: Text(
@@ -82,7 +84,7 @@ class _TimeSelectorState extends State<_TimeSelector> {
                 style: TextStyle(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
-                  color: isSelected ? AppColors.primary : AppColors.grey200,
+                  color: isSelected ? AppColors.primary : AppColors.textMuted,
                 ),
               ),
             ),

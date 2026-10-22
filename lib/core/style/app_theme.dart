@@ -6,17 +6,44 @@ import 'package:isnad_worker/core/style/text_styles.dart';
 import 'app_colors.dart';
 
 class AppTheme {
+  /// Maps [AppTextStyles] onto the Material text roles so every `Text`
+  /// (and Material widgets like buttons, list tiles, dialogs) picks up the
+  /// app font, sizes and theme-aware colors by default.
+  static TextTheme _buildTextTheme({
+    required Color heading,
+    required Color body,
+    required Color subtitle,
+  }) {
+    return TextTheme(
+      displayLarge: AppTextStyles.font28Bold.copyWith(color: heading),
+      displayMedium: AppTextStyles.font24Bold.copyWith(color: heading),
+      displaySmall: AppTextStyles.font24SemiBold.copyWith(color: heading),
+      headlineLarge: AppTextStyles.font24Bold.copyWith(color: heading),
+      headlineMedium: AppTextStyles.font20Bold.copyWith(color: heading),
+      headlineSmall: AppTextStyles.font18Bold.copyWith(color: heading),
+      titleLarge: AppTextStyles.font18SemiBold.copyWith(color: heading),
+      titleMedium: AppTextStyles.font16SemiBold.copyWith(color: heading),
+      titleSmall: AppTextStyles.font14SemiBold.copyWith(color: heading),
+      bodyLarge: AppTextStyles.font16Regular.copyWith(color: body),
+      bodyMedium: AppTextStyles.font14Regular.copyWith(color: body),
+      bodySmall: AppTextStyles.font12Regular.copyWith(color: subtitle),
+      labelLarge: AppTextStyles.font14SemiBold.copyWith(color: body),
+      labelMedium: AppTextStyles.font12Medium.copyWith(color: body),
+      labelSmall: AppTextStyles.font10Regular.copyWith(color: subtitle),
+    );
+  }
+
   static final ThemeData light = ThemeData(
     useMaterial3: false,
     brightness: Brightness.light,
-    fontFamily: 'Bukra',
+    fontFamily: AppTextStyles.fontFamily,
     primaryColor: AppColors.primary,
 
     splashColor: Colors.transparent,
-    textTheme: ThemeData.light().textTheme.apply(
-      fontFamily: 'Bukra',
-      bodyColor: AppColors.textLight,
-      displayColor: AppColors.textLight,
+    textTheme: _buildTextTheme(
+      heading: AppColors.typographyHeadingLight,
+      body: AppColors.typographyBodyLight,
+      subtitle: AppColors.typographySubtitleLight,
     ),
     highlightColor: Colors.transparent,
     visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -145,16 +172,16 @@ class AppTheme {
     primaryColor: AppColors.primary,
     splashColor: Colors.transparent,
 
-    fontFamily: 'Bukra',
+    fontFamily: AppTextStyles.fontFamily,
     highlightColor: Colors.transparent,
 
     visualDensity: VisualDensity.adaptivePlatformDensity,
     scaffoldBackgroundColor: AppColors.backgroundPrimaryDark,
     cardTheme: CardThemeData(color: AppColors.cardBackgroundDark),
-    textTheme: ThemeData.light().textTheme.apply(
-      fontFamily: 'Bukra',
-      bodyColor: AppColors.textDark,
-      displayColor: AppColors.textDark,
+    textTheme: _buildTextTheme(
+      heading: AppColors.typographyHeadingDark,
+      body: AppColors.typographyBodyDark,
+      subtitle: AppColors.typographySubtitleDark,
     ),
 
     colorScheme: ColorScheme(

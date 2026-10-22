@@ -25,7 +25,7 @@ class ViewToggelButtonWidget extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [AppDimensions.secondaryShadow],
           shape: BoxShape.circle,
-          color: isGridView ? AppColors.primary : AppColors.grey50,
+          color: isGridView ? AppColors.primary : AppColors.neutralSurface,
         ),
         width: 45.r,
         height: 45.r,
@@ -39,7 +39,7 @@ class ViewToggelButtonWidget extends StatelessWidget {
             child: SvgPicture.asset(
               AppIcons.gridIcon,
               key: ValueKey(isGridView),
-              color: isGridView ? AppColors.white : AppColors.grey300,
+              color: isGridView ? AppColors.white : AppColors.textMuted,
             ),
           ),
         ),

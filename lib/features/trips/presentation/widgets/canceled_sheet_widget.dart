@@ -74,7 +74,7 @@ class _CanceledSheetWidgetViewState extends State<_CanceledSheetWidgetView> {
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(8.r),
                     shape: BoxShape.circle,
-                    color: AppColors.errorBackground,
+                    color: AppColors.errorSurface,
                     child: SvgPicture.asset(AppIcons.cancelIcon),
                   ),
 
@@ -84,13 +84,13 @@ class _CanceledSheetWidgetViewState extends State<_CanceledSheetWidgetView> {
                       Text(
                         'trips.cancel_sheet.title'.tr(),
                         style: AppTextStyles.font12Medium.copyWith(
-                          color: AppColors.grey200,
+                          color: AppColors.typographySubtitle,
                         ),
                       ),
                       Text(
                         "ORD-123456",
                         style: AppTextStyles.font16Bold.copyWith(
-                          color: AppColors.typographyHeadingLight,
+                          color: AppColors.typographyHeading,
                         ),
                       ),
                     ],
@@ -126,7 +126,7 @@ class _CanceledSheetWidgetViewState extends State<_CanceledSheetWidgetView> {
                       border: Border.all(
                         color: isSelected
                             ? Theme.of(context).colorScheme.primary
-                            : AppColors.grey200,
+                            : AppColors.border,
                         width: 1.w,
                       ),
                       child: Center(
@@ -135,7 +135,7 @@ class _CanceledSheetWidgetViewState extends State<_CanceledSheetWidgetView> {
                           style: AppTextStyles.font14Regular.copyWith(
                             color: isSelected
                                 ? Theme.of(context).colorScheme.primary
-                                : AppColors.grey200,
+                                : AppColors.textMuted,
                           ),
                         ),
                       ),

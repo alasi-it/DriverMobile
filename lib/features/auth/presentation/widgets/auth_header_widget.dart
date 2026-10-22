@@ -11,7 +11,7 @@ class AuthHeaderWidget extends StatelessWidget {
     return Center(
       child: Text(
         title,
-        style: AppTextStyles.font14Regular.copyWith(color: AppColors.grey300),
+        style: AppTextStyles.font14Regular.copyWith(color: AppColors.textMuted),
         textAlign: TextAlign.center,
       ),
     );

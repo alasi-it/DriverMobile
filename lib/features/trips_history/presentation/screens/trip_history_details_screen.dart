@@ -56,7 +56,7 @@ class TripHistoryDetailsScreen extends StatelessWidget {
                 Text(
                   '3/3 ${'trips_history.card.completed'.tr()}',
                   style: AppTextStyles.font12Regular.copyWith(
-                    color: AppColors.green700,
+                    color: AppColors.successForeground,
                   ),
                 ),
               ],

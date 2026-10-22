@@ -36,7 +36,7 @@ class _ContactUsSuccessContent extends StatelessWidget {
             SizedBox(height: 8.h),
             AppContainer(
               width: double.infinity,
-              color: AppColors.green50,
+              color: AppColors.successContainerBackground,
               boxShadow: const [],
               child: Column(
                 children: [

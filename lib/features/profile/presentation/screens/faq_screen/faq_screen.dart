@@ -5,6 +5,7 @@ import 'package:isnad_worker/core/style/app_dimensions.dart';
 import 'package:isnad_worker/core/style/text_styles.dart';
 import 'package:isnad_worker/core/utils/widgets/layout/app_container.dart';
 import 'package:isnad_worker/core/utils/widgets/layout/custom_app_bar.dart';
+import 'package:isnad_worker/core/style/app_colors.dart';
 
 class FaqScreen extends StatefulWidget {
   const FaqScreen({super.key});
@@ -95,9 +96,9 @@ class _FaqScreenState extends State<FaqScreen> {
                           width: 3.w,
                           height: 3.h,
 
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.black,
+                            color: AppColors.typographyHeading,
                           ),
                         ),
                         Text(

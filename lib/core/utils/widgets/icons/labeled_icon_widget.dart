@@ -26,7 +26,7 @@ class LabeledIconWidget extends StatelessWidget {
           AppContainer(
             boxShadow: [],
             shape: BoxShape.circle,
-            color: AppColors.primary50,
+            color: AppColors.primarySurface,
             padding: EdgeInsets.all(8.r),
 
             child: SvgPicture.asset(

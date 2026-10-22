@@ -20,9 +20,9 @@ extension TransferRequestStatusX on TransferRequestStatus {
       case TransferRequestStatus.unconfirmed:
         return AppColors.warning2Color;
       case TransferRequestStatus.confirmed:
-        return AppColors.green700;
+        return AppColors.successForeground;
       case TransferRequestStatus.cancelled:
-        return AppColors.errorColor;
+        return AppColors.errorForeground;
     }
   }
 }

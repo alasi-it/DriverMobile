@@ -150,7 +150,7 @@ class _ErrorScreenState extends State<ErrorScreen>
     padding: EdgeInsets.zero,
     child: Icon(
       Icons.warning_amber_rounded,
-      color: AppColors.primaryLight,
+      color: AppColors.primary,
       size: 48,
     ),
   );
@@ -221,7 +221,7 @@ class _ErrorScreenState extends State<ErrorScreen>
               width: 8,
               height: 8,
               shape: BoxShape.circle,
-              color: AppColors.primaryLight,
+              color: AppColors.primary,
             ),
             const SizedBox(width: 8),
             Text(
@@ -435,7 +435,7 @@ class AppInlineErrorWidget extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 child: Icon(
                   Icons.warning_amber_rounded,
-                  color: AppColors.primaryLight,
+                  color: AppColors.primary,
                   size: 20,
                 ),
               ),

@@ -29,7 +29,7 @@ class ErrorWidgetWithMsg extends StatelessWidget {
           msg,
           textAlign: TextAlign.center,
           style: AppTextStyles.font14Regular.copyWith(
-            color: AppColors.errorColor,
+            color: AppColors.errorForeground,
           ),
         ),
         if (onRetry != null) ...[

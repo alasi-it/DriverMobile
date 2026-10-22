@@ -26,19 +26,19 @@ class CustomDivider extends StatelessWidget {
           Expanded(
             child: Divider(
               height: hight ?? 1.8.h,
-              color: color ?? AppColors.primary700,
+              color: color ?? AppColors.primaryForeground,
               thickness: 1.3,
             ),
           ),
           SizedBox(width: 12.w),
           AppContainer(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
-            color: (color ?? AppColors.primary700).withOpacity(0.1),
+            color: (color ?? AppColors.primaryForeground).withOpacity(0.1),
             borderRadius: BorderRadius.circular(20.r),
             child: Text(
               text!,
               style: AppTextStyles.font13Medium.copyWith(
-                color: textColor ?? color ?? AppColors.primary700,
+                color: textColor ?? color ?? AppColors.primaryForeground,
               ),
             ),
           ),
@@ -46,7 +46,7 @@ class CustomDivider extends StatelessWidget {
           Expanded(
             child: Divider(
               height: hight ?? 1.8.h,
-              color: color ?? AppColors.primary700,
+              color: color ?? AppColors.primaryForeground,
               thickness: 1,
             ),
           ),
@@ -54,6 +54,6 @@ class CustomDivider extends StatelessWidget {
       );
     }
 
-    return Divider(height: hight ?? 1.8.h, color: color ?? AppColors.primary50);
+    return Divider(height: hight ?? 1.8.h, color: color ?? AppColors.divider);
   }
 }

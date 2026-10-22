@@ -32,8 +32,8 @@ class ServiceCardWidget extends StatelessWidget {
             CircleIconWidget(
               padding: EdgeInsets.all(8.r),
               icon: icon,
-              backgroundColor: AppColors.primary100,
-              borderColor: AppColors.primary300,
+              backgroundColor: AppColors.primarySurfaceStrong,
+              borderColor: AppColors.primaryBorder,
             ),
             Text(
               title,

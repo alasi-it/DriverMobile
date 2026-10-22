@@ -27,10 +27,10 @@ class DeliverySheetHeaderRow extends StatelessWidget {
               padding: EdgeInsets.all(8.r),
               shape: BoxShape.circle,
               boxShadow: [],
-              color: AppColors.errorBackground,
+              color: AppColors.errorSurface,
               child: SvgPicture.asset(
                 AppIcons.warningTriangleIcon,
-                color: AppColors.errorColor,
+                color: AppColors.errorForeground,
               ),
             ),
             Column(
@@ -39,13 +39,13 @@ class DeliverySheetHeaderRow extends StatelessWidget {
                 Text(
                   'trips.delivery_sheet.title'.tr(),
                   style: AppTextStyles.font12Medium.copyWith(
-                    color: AppColors.grey200,
+                    color: AppColors.typographySubtitle,
                   ),
                 ),
                 Text(
                   orderId,
                   style: AppTextStyles.font16Bold.copyWith(
-                    color: AppColors.typographyHeadingLight,
+                    color: AppColors.typographyHeading,
                   ),
                 ),
               ],

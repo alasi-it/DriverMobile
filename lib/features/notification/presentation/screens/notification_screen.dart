@@ -33,15 +33,15 @@ class NotificationScreen extends StatelessWidget {
                   child: StatPillWidget(
                     value: '10',
                     labelKey: 'trips.details.transfer_requests',
-                    backgroundColor: AppColors.green50,
-                    color: AppColors.green700,
+                    backgroundColor: AppColors.successContainerBackground,
+                    color: AppColors.successForeground,
                   ),
                 ),
                 Expanded(
                   child: StatPillWidget(
                     value: '5',
                     labelKey: 'trips.details.confirmed',
-                    backgroundColor: AppColors.warning50Color,
+                    backgroundColor: AppColors.warningSurface,
                     color: AppColors.warning2Color,
                   ),
                 ),
@@ -49,8 +49,8 @@ class NotificationScreen extends StatelessWidget {
                   child: StatPillWidget(
                     value: '1',
                     labelKey: 'trips.details.cancelled',
-                    backgroundColor: AppColors.errorBackground,
-                    color: AppColors.errorColor,
+                    backgroundColor: AppColors.errorSurface,
+                    color: AppColors.errorForeground,
                   ),
                 ),
               ],
@@ -144,12 +144,13 @@ class NotificationDetailsSheetWidget extends StatelessWidget {
     super.key,
     String? icon,
     this.iconColor = AppColors.warningColor,
-    this.iconBackgroundColor = AppColors.warning50Color,
+    Color? iconBackgroundColor,
     this.title = 'تم تعيين رحلة جديدة',
     this.date = '04 أغسطس - 02:23 م',
     this.message =
         'تم تعيينك على الرحلة #204 — الانطلاق من حي العليا إلى مطار الملك خالد.',
-  }) : icon = icon ?? AppIcons.startActionIcon;
+  }) : icon = icon ?? AppIcons.startActionIcon,
+       iconBackgroundColor = iconBackgroundColor ?? AppColors.warningSurface;
 
   final String icon;
   final Color iconColor;
@@ -236,10 +237,10 @@ class NotificationDetailsSheetWidget extends StatelessWidget {
                 Expanded(
                   child: CustomButton(
                     title: 'إغلاق',
-                    bgColor: AppColors.white,
-                    textColor: AppColors.typographyHeadingLight,
+                    bgColor: AppColors.cardBackground,
+                    textColor: AppColors.typographyHeading,
 
-                    borderColor: AppColors.grey100,
+                    borderColor: AppColors.border,
                     onTap: () => Navigator.of(context).pop(),
                   ),
                 ),

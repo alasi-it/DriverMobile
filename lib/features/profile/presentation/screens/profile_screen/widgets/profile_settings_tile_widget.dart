@@ -55,7 +55,7 @@ class ProfileSettingsTileWidget extends StatelessWidget {
             if (!isCompleted) ...[
               Icon(
                 Icons.warning_amber_outlined,
-                color: AppColors.errorColor,
+                color: AppColors.errorForeground,
                 size: 20.sp,
               ),
               12.horizontalSpace,

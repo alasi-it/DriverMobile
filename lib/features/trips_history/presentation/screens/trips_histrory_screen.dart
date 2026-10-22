@@ -72,8 +72,8 @@ class TripsHistoryScreen extends StatelessWidget {
                   child: StatPillWidget(
                     value: '10',
                     labelKey: 'trips.details.transfer_requests',
-                    backgroundColor: AppColors.green50,
-                    color: AppColors.green700,
+                    backgroundColor: AppColors.successContainerBackground,
+                    color: AppColors.successForeground,
                   ),
                 ),
 
@@ -81,7 +81,7 @@ class TripsHistoryScreen extends StatelessWidget {
                   child: StatPillWidget(
                     value: '5',
                     labelKey: 'trips.details.confirmed',
-                    backgroundColor: AppColors.warning50Color,
+                    backgroundColor: AppColors.warningSurface,
                     color: AppColors.warning2Color,
                   ),
                 ),
@@ -89,8 +89,8 @@ class TripsHistoryScreen extends StatelessWidget {
                   child: StatPillWidget(
                     value: '1',
                     labelKey: 'trips.details.cancelled',
-                    backgroundColor: AppColors.errorBackground,
-                    color: AppColors.errorColor,
+                    backgroundColor: AppColors.errorSurface,
+                    color: AppColors.errorForeground,
                   ),
                 ),
               ],

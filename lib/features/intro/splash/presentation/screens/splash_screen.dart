@@ -123,11 +123,11 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     if (!_showAnimation) {
-      return const Scaffold(backgroundColor: AppColors.white);
+      return Scaffold(backgroundColor: AppColors.backgroundPrimary);
     }
 
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.backgroundPrimary,
       body: LayoutBuilder(
         builder: (context, constraints) {
           final size = Size(constraints.maxWidth, constraints.maxHeight);

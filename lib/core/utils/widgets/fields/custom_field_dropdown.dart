@@ -196,7 +196,7 @@ class _FieldContainer extends StatelessWidget {
       border: Border.all(
         color: hasError
             ? AppColors.errorBorder
-            : AppColors.grey100.withOpacity(0.4),
+            : AppColors.border.withOpacity(0.4),
         width: hasError ? 1.5 : 1,
       ),
       child: Row(
